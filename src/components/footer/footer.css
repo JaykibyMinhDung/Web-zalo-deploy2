@@ -1,5 +1,9 @@
-.svg {
-  text-align: center;
-  width: 50%;
-  color: rgb(66, 66, 66);
+.alignSvg a svg {
+  text-align: end;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.alignSvg a {
+  font-size: x-small;
 }

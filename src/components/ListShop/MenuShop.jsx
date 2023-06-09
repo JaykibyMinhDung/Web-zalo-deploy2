@@ -15,7 +15,7 @@ const MenuShop = (props) => {
     >
       {props.products.map((e) => (
         <SwiperSlide>
-          <img src={e.imageUrl} alt="error" width={"100%"} />
+          <img src={e.imageUrl} alt="error" width={"100%"} loading="lazy" />
         </SwiperSlide>
       ))}
     </Swiper>

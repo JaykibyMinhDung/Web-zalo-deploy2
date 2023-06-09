@@ -35,14 +35,13 @@ const Footer = () => {
   return (
     <Disclosure
       as="nav"
-      className=" drop-shadow-4xl absolute top-full bg-slate-50"
+      className=" drop-shadow-4xl absolute bottom-0 bg-slate-50"
     >
       <>
-        <div className="mx-auto w-screen px-2 sm:px-6 lg:px-8">
+        <div className="mx-auto w-screen px-2 sm:px-6 lg:px-8 font-sans">
           <div className="relative mx-px flex items-center justify-between">
             {navigation.map((item) => (
-              // icon
-              <div className="flex-col mx-1 text-center">
+              <div className="flex-col text-center alignSvg">
                 <NavLink
                   key={item.name}
                   to={item.href}
@@ -51,13 +50,13 @@ const Footer = () => {
                   // )}
                   style={({ isActive, isPending }) => {
                     return {
-                      color: isActive ? "black" : "rgb(245 158 11)",
+                      color: isActive ? "black" : "#f67227",
                     };
                   }}
                   aria-current={item.current ? "page" : undefined}
                 >
-                  <p className="svg ml-3.5 ">{item.icon}</p>
-                  {/* hover:bg-slate-50 hover:text-amber-500, */}
+                  {item.icon}
+                  {/* <p className="svg ml-3.5">{item.icon}</p> */}
                   {item.name}
                 </NavLink>
               </div>

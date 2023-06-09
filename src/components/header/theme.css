@@ -22,7 +22,7 @@
 }
 
 .border--header__option {
-  border: 0.04px solid rgb(238, 238, 238);
+  border: thin solid rgb(238, 238, 238);
   /* background-color: rgba(109, 109, 109, 0.452); */
 }
 
@@ -45,7 +45,8 @@
     height: 100vh;
   }
   .background--header {
-    background-color: rgb(255, 102, 0);
+    /* background-color: rgb(255, 102, 0); */
+    background-color: #f67227;
     position: absolute;
     /* left: calc(100% - 55rem); */
     top: -50%;

@@ -21,14 +21,21 @@ module.exports = {
       fontSize: {
         "10xl": "font-size: 20%; line-height: 1;",
       },
+      width: {
+        "15%": "15%",
+      },
       spacing: {
         "20%": "20%",
         "90%": "88%",
         "100px": "28rem",
       },
       backgroundColor: {
-        "blue-transparent": "rgba(109, 109, 109, 0.452)",
-        "orange-navbar": "rgb(255, 102, 0)",
+        "blue-transparent": "#D16121",
+        "orange-navbar": "#f67227",
+        "search-white": "#FDE3D4",
+      },
+      textColor: {
+        "orange-navbar": "#f67227",
       },
       screens: {
         adr: "320px",

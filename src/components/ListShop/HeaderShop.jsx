@@ -3,6 +3,9 @@ import { ReactComponent as HomeIcon } from "../../icon/iconhome.svg";
 import Option from "../header/Option";
 import { useNavigate } from "react-router-dom";
 
+// import Style from "./list.css";
+import "./list.css";
+
 const HeaderShop = () => {
   const navigate = useNavigate();
 
@@ -11,7 +14,7 @@ const HeaderShop = () => {
   };
   return (
     <React.Fragment>
-      <div className=" relative p-5 flex items-center gap-4 justify-around bg-orange-navbar">
+      <div className=" relative p-3 flex items-center gap-4 justify-around bg-orange-navbar textPlaceholde">
         <HomeIcon
           className="sm:w-14 sm:h-10 w-1/5 cursor-pointer"
           color={"#fff"}
@@ -19,12 +22,12 @@ const HeaderShop = () => {
         />
         <div className="flex w-full sm:w-2/4 relative">
           <input
-            className=" outline-none w-full placeholder:text-xs rounded-2xl placeholder:text-center text-center pl-4 p-2"
+            className="bg-search-white outline-none w-full placeholder:text-xs rounded-2xl placeholder:text-center text-center pl-4 py-1"
             type="text"
             value=""
-            placeholder="Tìm kiếm theo tên sản phẩm"
+            placeholder="Tìm kiếm sản phẩm"
           />
-          <div className="absolute left-1 top-2">
+          <div className="absolute left-1 top-1">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

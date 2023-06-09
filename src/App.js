@@ -3,11 +3,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import HomePage from "./pages/HomePage";
 import ListShop from "./pages/ListShop";
+import Notfound from "./pages/404";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="*" element={<Notfound />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/list" element={<ListShop />} />
         {/* <Route path="/detail" element={<Detail />} /> */}
