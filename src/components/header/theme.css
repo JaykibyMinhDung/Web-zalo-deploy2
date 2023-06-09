@@ -1,0 +1,56 @@
+.background--header {
+  background-color: rgb(255, 102, 0);
+  position: absolute;
+  /* left: calc(100% - 55rem); */
+  top: -20%;
+  width: 120vw;
+  height: 120vw;
+  border-radius: 50%;
+}
+
+.container--header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+.border--header__justify {
+  justify-content: space-between;
+}
+
+.border--header__option {
+  border: 0.04px solid rgb(238, 238, 238);
+  /* background-color: rgba(109, 109, 109, 0.452); */
+}
+
+.border--header__justify button {
+  font-size: xx-large;
+  /* background-color: rgba(109, 109, 109, 0.452); */
+}
+
+@media (min-width: 768px) and (max-width: 1280px) {
+  .background--header {
+    border-bottom-left-radius: 10rem;
+    border-bottom-right-radius: 10rem;
+  }
+  .container--header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+  }
+  .background--header {
+    background-color: rgb(255, 102, 0);
+    position: absolute;
+    /* left: calc(100% - 55rem); */
+    top: -50%;
+    width: 120vw;
+    height: 120vw;
+    border-radius: 50%;
+  }
+}
