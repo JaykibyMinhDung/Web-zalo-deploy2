@@ -13,7 +13,7 @@ const HeaderShop = () => {
     <React.Fragment>
       <div className=" relative p-5 flex items-center gap-4 justify-around bg-orange-navbar">
         <HomeIcon
-          className="sm:w-14 sm:h-10 w-1/5 ml-2 cursor-pointer"
+          className="sm:w-14 sm:h-10 w-1/5 cursor-pointer"
           color={"#fff"}
           onClick={BackHome}
         />

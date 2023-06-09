@@ -7,7 +7,7 @@ import { ReactComponent as ContactIcon } from "../../icon/contact.svg";
 const HeaderMenu = () => {
   return (
     <div className=" w-full h-full">
-      <div className="absolute left-7 md:left-24 lg:left-20% 2xl:left-96 top-40 md:top-52 w-5/6 md:w-4/5 lg:w-3/5 h-48 md:h-60 drop-shadow-5xl rounded-3xl bg-white z-10">
+      <div className="absolute left-6 md:left-24 lg:left-20% 2xl:left-96 top-36 md:top-52 w-90% md:w-4/5 lg:w-3/5 h-48 md:h-60 drop-shadow-6xl rounded-3xl bg-white z-10">
         <input
           type="text"
           className="w-full h-1/5 border-b-2 text-center outline-0 rounded-t-3xl"

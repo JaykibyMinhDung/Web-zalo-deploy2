@@ -13,12 +13,17 @@ module.exports = {
           "0 12px 25px rgba(0,0,0,0.10)",
           "0px 10px 12px rgba(0, 0, 0, 0.10)",
         ],
+        "6xl": [
+          "0 7px 20px rgba(0,0,0,0.10)",
+          "0px 5px 10px rgba(0, 0, 0, 0.10)",
+        ],
       },
       fontSize: {
         "10xl": "font-size: 20%; line-height: 1;",
       },
       spacing: {
         "20%": "20%",
+        "90%": "88%",
         "100px": "28rem",
       },
       backgroundColor: {

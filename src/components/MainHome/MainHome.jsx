@@ -8,9 +8,9 @@ import { ReactComponent as DocumentIcon } from "../../icon/documents-check.svg";
 const MainHome = () => {
   return (
     <main className=" w-full h-full">
-      <div className="absolute left-8 md:left-24 lg:left-20% 2xl:left-96 md:top-2/4 top-96 w-5/6 md:w-4/5 lg:w-3/5 h-60 rounded-3xl bg-white">
+      <div className="absolute left-5 md:left-24 lg:left-20% 2xl:left-96 top-80 md:top-2/4 w-90% md:w-4/5 lg:w-3/5 h-60 rounded-3xl bg-white">
         {/* Menu */}
-        <div className="flex flex-nowrap justify-between text-center mx-3 md:mx-8 mt-8">
+        <div className="flex flex-nowrap justify-between text-center mx-1 ml-3 md:mx-8 mt-8">
           <NavLink to="#">
             <span className="inline-flex items-center rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
               <CartIcon className="w-7 sm:w-14" />

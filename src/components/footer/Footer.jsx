@@ -39,10 +39,10 @@ const Footer = () => {
     >
       <>
         <div className="mx-auto w-screen px-2 sm:px-6 lg:px-8">
-          <div className="relative mx-8 flex items-center justify-between">
+          <div className="relative mx-px flex items-center justify-between">
             {navigation.map((item) => (
               // icon
-              <div className="flex-col text-center">
+              <div className="flex-col mx-1 text-center">
                 <NavLink
                   key={item.name}
                   to={item.href}
