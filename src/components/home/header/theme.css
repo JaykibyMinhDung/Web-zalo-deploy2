@@ -2,7 +2,7 @@
   background-color: rgb(255, 102, 0);
   position: absolute;
   /* left: calc(100% - 55rem); */
-  top: -22%;
+  top: -28%;
   width: 120vw;
   height: 120vw;
   border-radius: 50%;
@@ -46,7 +46,7 @@
   }
   .background--header {
     /* background-color: rgb(255, 102, 0); */
-    background-color: #f67227;
+    background-color: #fd7f35;
     position: absolute;
     /* left: calc(100% - 55rem); */
     top: -50%;

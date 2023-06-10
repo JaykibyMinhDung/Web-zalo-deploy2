@@ -1,6 +1,6 @@
 import React from "react";
 import { ReactComponent as HomeIcon } from "../../icon/iconhome.svg";
-import Option from "../header/Option";
+import Option from "../home/header/Option";
 import { useNavigate } from "react-router-dom";
 
 // import Style from "./list.css";
@@ -22,12 +22,12 @@ const HeaderShop = () => {
         />
         <div className="flex w-full sm:w-2/4 relative">
           <input
-            className="bg-search-white outline-none w-full placeholder:text-xs rounded-2xl placeholder:text-center text-center pl-4 py-1"
+            className="bg-search-white outline-none w-full placeholder:text-xs rounded-2xl placeholder:text-center text-center pl-6 py-1"
             type="text"
             value=""
             placeholder="Tìm kiếm sản phẩm"
           />
-          <div className="absolute left-1 top-1">
+          <div className="absolute left-3 top-1">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

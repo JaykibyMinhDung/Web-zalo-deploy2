@@ -4,4 +4,24 @@
   padding-right: 2%;
 }
 
+.background__images {
+  background-color: #fff3c3;
+}
+
+.cards p {
+  /* display: inline-block; */
+  width: 100%;
+  font-size: small;
+  text-align: center;
+  margin: auto;
+}
+
+.background__images img {
+  border-radius: 50%;
+  margin: auto;
+}
 /* textPlaceholde */
+
+.distanceCards {
+  padding: 0.5rem !important;
+}

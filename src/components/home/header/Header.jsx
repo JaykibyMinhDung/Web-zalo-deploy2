@@ -7,8 +7,8 @@ import Option from "./Option";
 import { Link } from "react-router-dom";
 
 import HeaderMenu from "../navbar/HeaderMenu";
-import MainHome from "../MainHome/MainHome";
-import imagesZalo from "../../images/imageown.jpg";
+import MainHome from "../article/MainHome";
+import imagesZalo from "../../../images/imageown.jpg";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -30,17 +30,20 @@ const Header = () => {
           {/* Profile dropdown */}
           <Menu as="div" className="relative ml-8 flex items-center ">
             {/* <div className="md:mr-80 md:block lg:hidden hidden"> */}
-            <div className="md:mr-80 md:block block mr-7 lg:hidden">
-              <div className="flex space-x-4 gap-y-8 w-fit mt-6">
-                <Menu.Button className="flex rounded-full w-14 h-14  bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+            <div className="md:mr-80 md:block block mr-x-% lg:hidden">
+              <div className="flex space-x-4 gap-y-8 w-fit mt-1">
+                <Menu.Button className="flex rounded-full w-10 h-10 mt-1 bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                   <span className="sr-only ">Open user menu</span>
                   <img
-                    className="h-14 w-14 rounded-full"
+                    className="h-10 w-10 rounded-full"
                     src={imagesZalo}
                     alt=""
                   />
                 </Menu.Button>
-                <div className=" text-10xl text-white">
+                <div
+                  style={{ fontSize: "small" }}
+                  className=" text-10xl text-white"
+                >
                   <p>Xin chào,</p>
                   <h2 className="font-bold">Minh Dũng CG</h2>
                 </div>

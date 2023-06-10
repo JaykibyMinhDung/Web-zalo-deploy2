@@ -11,6 +11,7 @@ const productsTemplate = [
       "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
     idProducts: "#",
     price: 450000,
+    topic: "Cốc đựng mang đi",
     oldPrice: 439000,
   },
   {
@@ -20,6 +21,7 @@ const productsTemplate = [
       "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
     idProducts: "/list",
     price: 365474,
+    topic: "Cốc chịu nhiệt",
     oldPrice: 648893,
   },
   {
@@ -29,6 +31,7 @@ const productsTemplate = [
       "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg",
     idProducts: "#z",
     price: 845759,
+    topic: "Sách vở",
     oldPrice: 432432,
   },
   {
@@ -38,6 +41,7 @@ const productsTemplate = [
       "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
     idProducts: "#",
     price: 824247,
+    topic: "Sách vở",
     oldPrice: 968600,
   },
   {
@@ -47,6 +51,7 @@ const productsTemplate = [
       "https://cdn.ttgtmedia.com/rms/onlineimages/hp_elitebook_mobile.jpg",
     idProducts: "#",
     price: 100000000,
+    topic: "Đồ dùng công nghệ",
     oldPrice: 756444,
   },
   {
@@ -56,6 +61,7 @@ const productsTemplate = [
       "https://cdn.ttgtmedia.com/rms/onlineimages/hp_elitebook_mobile.jpg",
     idProducts: "#",
     price: 1003230000,
+    topic: "Đồ dùng công nghệ",
     oldPrice: 756444,
   },
   {
@@ -65,6 +71,7 @@ const productsTemplate = [
       "https://cdn.ttgtmedia.com/rms/onlineimages/hp_elitebook_mobile.jpg",
     idProducts: "#",
     price: 143400000,
+    topic: "Đồ dùng công nghệ",
     oldPrice: 756444,
   },
   {
@@ -74,6 +81,7 @@ const productsTemplate = [
       "https://cdn.ttgtmedia.com/rms/onlineimages/hp_elitebook_mobile.jpg",
     idProducts: "#",
     price: 100000000,
+    topic: "Đồ dùng công nghệ",
     oldPrice: 756444,
   },
 ];

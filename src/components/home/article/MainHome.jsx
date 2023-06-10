@@ -1,14 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { ReactComponent as CrowIcon } from "../../icon/crown-svgrepo-com.svg";
-import { ReactComponent as GiftIcon } from "../../icon/giftboild.svg";
-import { ReactComponent as CartIcon } from "../../icon/cartboild.svg";
-import { ReactComponent as DocumentIcon } from "../../icon/documents-check.svg";
+import { ReactComponent as CrowIcon } from "../../../icon/crown-svgrepo-com.svg";
+import { ReactComponent as GiftIcon } from "../../../icon/giftboild.svg";
+import { ReactComponent as CartIcon } from "../../../icon/cartboild.svg";
+import { ReactComponent as DocumentIcon } from "../../../icon/documents-check.svg";
 
 const MainHome = () => {
   return (
     <main className=" w-full h-full">
-      <div className="absolute left-5 md:left-24 lg:left-20% 2xl:left-96 top-80 md:top-2/4 w-90% md:w-4/5 lg:w-3/5 h-60 rounded-3xl bg-white font-sans">
+      <div
+        style={{ fontSize: "small" }}
+        className="absolute left-5 md:left-24 lg:left-20% 2xl:left-96 top-64 md:top-2/4 w-90% md:w-4/5 lg:w-3/5 h-60 rounded-3xl bg-white font-sans"
+      >
         {/* Menu */}
         <div className="flex flex-nowrap justify-between text-center mx-1 ml-3 md:mx-8 mt-8">
           <NavLink to="#">

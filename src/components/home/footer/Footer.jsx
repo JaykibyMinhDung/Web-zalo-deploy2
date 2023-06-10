@@ -2,11 +2,11 @@ import React from "react";
 import { Disclosure } from "@headlessui/react";
 import { NavLink } from "react-router-dom";
 
-import { ReactComponent as PageHome } from "../../icon/iconhome.svg";
-import { ReactComponent as ListIcon } from "../../icon/iconlist.svg";
-import { ReactComponent as CartIcon } from "../../icon/cartIcon.svg";
-import { ReactComponent as ChatText } from "../../icon/chatText.svg";
-import { ReactComponent as User } from "../../icon/user.svg";
+import { ReactComponent as PageHome } from "../../../icon/iconhome.svg";
+import { ReactComponent as ListIcon } from "../../../icon/iconlist.svg";
+import { ReactComponent as CartIcon } from "../../../icon/cartIcon.svg";
+import { ReactComponent as ChatText } from "../../../icon/chatText.svg";
+import { ReactComponent as User } from "../../../icon/user.svg";
 
 import "./footer.css";
 
@@ -35,19 +35,17 @@ const Footer = () => {
   return (
     <Disclosure
       as="nav"
-      className=" drop-shadow-4xl absolute bottom-0 bg-slate-50"
+      className=" drop-shadow-4xl relative bottom-0 bg-slate-50"
     >
       <>
-        <div className="mx-auto w-screen px-2 sm:px-6 lg:px-8 font-sans">
+        <div className="mx-auto w-screen h-auto px-2 sm:px-6 lg:px-8 font-sans">
           <div className="relative mx-px flex items-center justify-between">
             {navigation.map((item) => (
-              <div className="flex-col text-center alignSvg">
+              <div className=" text-center alignSvg">
                 <NavLink
                   key={item.name}
                   to={item.href}
-                  // className={classNames(
-                  //   "rounded-md px-3 text-sm font-medium, hover:text-amber-500"
-                  // )}
+                  // flex-col
                   style={({ isActive, isPending }) => {
                     return {
                       color: isActive ? "black" : "#f67227",
@@ -70,10 +68,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-// ({ isActive, isPending }) =>
-// isPending
-//   ? "pending"
-//   : isActive
-//   ? "text-black hover:bg-slate-50 hover:text-amber-500"
-//   : "bg-slate-50 text-amber-500";

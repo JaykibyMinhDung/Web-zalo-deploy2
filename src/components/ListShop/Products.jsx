@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Products = (props) => {
   const VND = new Intl.NumberFormat("vi-VN", {
@@ -14,7 +15,7 @@ const Products = (props) => {
 
         <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 xl:gap-x-8">
           {props.products.map((e) => (
-            <a href="#" className="group">
+            <Link to="/detail" className="group">
               <div className=" relative aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
                 <div className="absolute top-0 left-0 text-white p-2 bg-orange-navbar rounded-xl">
                   {e.discount}
@@ -25,8 +26,14 @@ const Products = (props) => {
                   className="h-full w-full object-cover object-center group-hover:opacity-75"
                 />
               </div>
+              <h3 className="mt-4 text-sm text-gray-700">{e.nameProduct}</h3>
               <div className="flex justify-between items-center">
-                <h3 className="mt-4 text-sm text-gray-700">{e.nameProduct}</h3>
+                <p
+                  style={{ fontSize: "small" }}
+                  className="mt-1 text-lg font-medium text-gray-900"
+                >
+                  {VND.format(e.price)}
+                </p>
                 <div className="mt-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -39,10 +46,7 @@ const Products = (props) => {
                   </svg>
                 </div>
               </div>
-              <p className="mt-1 text-lg font-medium text-gray-900">
-                {VND.format(e.price)}
-              </p>
-            </a>
+            </Link>
           ))}
 
           {/*  More products...  */}

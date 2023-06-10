@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import HomePage from "./pages/HomePage";
 import ListShop from "./pages/ListShop";
-import Notfound from "./pages/404";
+import Notfound from "./components/error/404";
+import DetailProduct from "./components/ListShop/Product/DetailProduce";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="*" element={<Notfound />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/list" element={<ListShop />} />
+        <Route path="/detail" element={<DetailProduct />} />
         {/* <Route path="/detail" element={<Detail />} /> */}
       </Routes>
     </BrowserRouter>

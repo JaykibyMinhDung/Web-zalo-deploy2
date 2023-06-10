@@ -24,6 +24,9 @@ module.exports = {
       width: {
         "15%": "15%",
       },
+      margin: {
+        "x-%": "3.2rem",
+      },
       spacing: {
         "20%": "20%",
         "90%": "88%",
