@@ -31,7 +31,7 @@ const MenuShop = (props) => {
             className={"h-28 p-1 cards " + (changeCards ? "bg-white " : "")}
           >
             <div className="background__images">
-              <img src={e.imageUrl} alt="error" width={"90%"} loading="lazy" />
+              <img src={e.imageUrl} alt="error" width={"100%"} loading="lazy" />
             </div>
             <p>{e.topic}</p>
           </div>

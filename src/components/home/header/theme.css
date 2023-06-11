@@ -3,6 +3,7 @@
   position: absolute;
   /* left: calc(100% - 55rem); */
   top: -28%;
+  right: auto;
   width: 120vw;
   height: 120vw;
   border-radius: 50%;

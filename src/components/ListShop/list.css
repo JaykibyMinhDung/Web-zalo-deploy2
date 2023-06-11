@@ -1,3 +1,13 @@
+/* Headerlist */
+
+.list__headershop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
 .textPlaceholde div input::placeholder {
   font-size: small;
   /* margin-left: 0%; */

@@ -14,7 +14,7 @@ const HeaderShop = () => {
   };
   return (
     <React.Fragment>
-      <div className=" relative p-3 flex items-center gap-4 justify-around bg-orange-navbar textPlaceholde">
+      <div className="relative p-3 flex items-center gap-4 justify-around bg-orange-navbar textPlaceholde">
         <HomeIcon
           className="sm:w-14 sm:h-10 w-1/5 cursor-pointer"
           color={"#fff"}

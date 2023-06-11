@@ -1,4 +1,5 @@
 import React from "react";
+import "../components/ListShop/list.css";
 import HeaderShop from "../components/ListShop/HeaderShop";
 import Products from "../components/ListShop/Products";
 import MenuShop from "../components/ListShop/MenuShop";
@@ -89,8 +90,12 @@ const productsTemplate = [
 const ListShop = () => {
   return (
     <div>
-      <HeaderShop />
-      <MenuShop products={productsTemplate} />
+      <div className="relative">
+        <div className="list__headershop">
+          <HeaderShop />
+          <MenuShop products={productsTemplate} />
+        </div>
+      </div>
       <Products products={productsTemplate} />
     </div>
   );

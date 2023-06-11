@@ -8,7 +8,7 @@ const Products = (props) => {
     currencyDisplay: "code",
   });
   return (
-    <div className="bg-white">
+    <div className="relative  top-44 bg-white">
       {/* max-w-2xl */}
       <div className="mx-auto  px-4 py-8 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className="sr-only">Products</h2>
@@ -16,8 +16,8 @@ const Products = (props) => {
         <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 xl:gap-x-8">
           {props.products.map((e) => (
             <Link to="/detail" className="group">
-              <div className=" relative aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                <div className="absolute top-0 left-0 text-white p-2 bg-orange-navbar rounded-xl">
+              <div className=" relative aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 border">
+                <div className="absolute top-0 left-0 text-white p-2 bg-orange-navbar rounded-ss rounded-ee-lg">
                   {e.discount}
                 </div>
                 <img

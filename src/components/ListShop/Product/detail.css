@@ -1,3 +1,5 @@
+/* element HTML */
+
 p,
 li {
   font-size: 90%;
@@ -14,15 +16,46 @@ b {
   margin-top: 1%;
 }
 ul {
-  list-style: circle !important;
-  margin-bottom: 1%;
-  margin-top: 1%;
+  margin-left: 1.5rem;
 }
 ul li {
   list-style-type: circle !important;
   margin-bottom: 1%;
   margin-top: 1%;
 }
+
+/* header */
+.positive-headers {
+  position: fixed;
+  top: 0;
+  left: 0%;
+  right: 0%;
+  padding: 0.8rem;
+}
+
+.detail__headers {
+  background-color: #f67227;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+}
+
+.detail__button--back {
+  display: flex;
+  align-items: center;
+  /* width:  */
+}
+
+.detail__button--back svg {
+  fill: white;
+}
+
+.detail__button--back p {
+  color: white;
+}
+
+/* header and main */
 .detail__backgroundimage {
   background-color: rgb(228, 228, 228);
   padding-bottom: 0.6rem;
@@ -32,17 +65,31 @@ ul li {
   padding: 0.5rem;
 }
 .detail__background {
-  margin: 0.5rem;
+  list-style-position: inside;
+  margin: 1.5rem;
 }
 .price {
   font-size: small;
   font-weight: 570;
   color: #f67227;
 }
+
+/* footer */
+
 .detail__footer {
+  position: fixed;
+  bottom: 0;
+  left: 0%;
+  right: 0%;
+  background-color: white;
   display: flex;
   justify-content: space-around;
+  padding-top: 1rem;
   padding-bottom: 1rem;
+  z-index: 100;
+}
+.detail__footer svg {
+  margin-top: 0.3rem;
 }
 .detail__footer .bt-add {
   color: #f67227;

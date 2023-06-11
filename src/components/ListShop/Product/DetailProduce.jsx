@@ -1,8 +1,18 @@
 import React from "react";
 import { ReactComponent as Chatzalo } from "../../../icon/chatText.svg";
+// import { ReactComponent as ChevronLeft } from "../../../icon/left-chevron-svgrepo-com.svg";
+import { FaChevronLeft } from "react-icons/fa";
+
+import Option from "../../home/header/Option";
 import "./detail.css";
+import { useNavigate } from "react-router-dom";
 
 const DetailProduct = () => {
+  const navigate = useNavigate();
+  const back = () => {
+    navigate("/list");
+  };
+
   const VND = new Intl.NumberFormat("vi-VN", {
     style: "currency",
     currency: "VND",
@@ -10,22 +20,34 @@ const DetailProduct = () => {
   });
   return (
     <React.Fragment>
+      <div onClick={back} className="positive-headers bg-orange-navbar">
+        <div className="detail__headers">
+          <div className="detail__button--back">
+            <FaChevronLeft />
+            <p style={{ fontWeight: 520, marginLeft: "0.5rem" }}>
+              {" "}
+              Chi tiết sản phẩm
+            </p>
+          </div>
+          <Option />
+        </div>
+      </div>
       <div className="detail__backgroundimage">
         <img
           src="https://newcdn.onshop.asia/images/narylee/bo-ni-bong-hinh-tho-cute-de-thuong.jpg"
           alt="lỗi"
         />
-        <div>
+        <div style={{ paddingLeft: "1.5rem" }}>
           <h2>Bộ đồ mặc nhà cotton áo cộc quần sooc ST9043</h2>
           <p className="price">{VND.format(6452200)}</p>
         </div>
       </div>
 
-      <div className="detail__background">
+      <div className="detail__background list-[disc] list-inside">
         <div>
-          <h4>Chi tiết sản phẩm</h4>
+          <h3>Chi tiết sản phẩm</h3>
+          <h4>MÔ TẢ SẢN PHẨM:</h4>
           <ul>
-            <h3>MÔ TẢ SẢN PHẨM:</h3>
             <li>Tên sản phẩm: Đồ bộ mặc nhà cotton áo cộc quần sooc</li>
             <li>Chất liệu vải: Cotton</li>
             <li>Số size: S-M-L-XL</li>
@@ -43,14 +65,14 @@ const DetailProduct = () => {
               thoáng khí. Kết cấu sợi dài hơn cotton thường gấp 2-3 lần
             </li>
           </ul>
+          <h4>Điểm nhấn thiết kế:</h4>
           <ul>
-            <h4>Điểm nhấn thiết kế:</h4>
             <li>Họa tiết thỏ độc đáo, mới lạ</li>
             <li>Điểm nhấn đường can phối ở quần tăng phần độc đáo</li>
             <li>Form đáng thoải mái, trẻ trung, năng động</li>
           </ul>
+          <h4>Tính năng, công dụng của sản phẩm: </h4>
           <ul>
-            <h4>Tính năng, công dụng của sản phẩm: </h4>
             <li>Thoái mái, mát mẻ khi mặc ở nhà</li>
             <li>Trẻ trung, hợp thời trang, đa năng khi dạo phố, mua sắm</li>
             <li>Mềm mại dễ chịu khi mặc đi ngủ</li>
@@ -59,8 +81,8 @@ const DetailProduct = () => {
             <b>Xuất xứ</b>: Sản phẩm được thiết kế độc quyền và sản xuất tỉ mỉ
             từng khâu, cam kết đảm bảo chất lượng bởi Sunfly.
           </p>
+          <h4>Size màu sản phẩm:</h4>
           <ul>
-            <h4>Size màu sản phẩm:</h4>
             <li>Các màu sản phẩm: Xanh két, biển đậm, hồng nâu, tím nhạt</li>
             <b>
               (Lưu ý: Do điều kiện thiết bị và ánh sáng khác nhau, màu sắc thực
@@ -99,7 +121,7 @@ const DetailProduct = () => {
               alt=""
             />
           </div>
-          <h3>vỀ THƯƠNG HIỆU THỜI TRANG SUNFLY: </h3>
+          <h3>VỀ THƯƠNG HIỆU THỜI TRANG SUNFLY: </h3>
           <ul>
             <li>
               Sunfly được ra đời với sứ mệnh mang lại vẻ đẹp tươi trẻ,tự tin và
