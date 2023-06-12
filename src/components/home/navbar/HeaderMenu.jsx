@@ -9,7 +9,7 @@ const HeaderMenu = () => {
     <div className=" w-full h-full">
       <div
         style={{ fontSize: "small" }}
-        className="absolute left-6 md:left-24 lg:left-20% 2xl:left-96 top-12% md:top-52 w-90% md:w-4/5 lg:w-3/5 h-36 md:h-60 drop-shadow-6xl rounded-3xl bg-white z-10 font-sans"
+        className="absolute left-6 md:left-24 lg:left-20% 2xl:left-96 top-15vh md:top-52 w-90% md:w-4/5 lg:w-3/5 h-36 md:h-60 drop-shadow-6xl rounded-3xl bg-white z-10 font-sans"
       >
         <input
           type="text"

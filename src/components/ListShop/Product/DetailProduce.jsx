@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { ReactComponent as Chatzalo } from "../../../icon/chatText.svg";
 // import { ReactComponent as ChevronLeft } from "../../../icon/left-chevron-svgrepo-com.svg";
 import { FaChevronLeft } from "react-icons/fa";
 
 import Option from "../../home/header/Option";
+import Popup from "../Modal/Modal";
 import "./detail.css";
 import { useNavigate } from "react-router-dom";
+import CheckOut from "./CheckOut";
 
 const DetailProduct = () => {
+  const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
   const back = () => {
     navigate("/list");
+  };
+  const showModal = () => {
+    return setShowPopup(true);
+  };
+  const hiddenModal = () => {
+    return setShowPopup(false);
   };
 
   const VND = new Intl.NumberFormat("vi-VN", {
@@ -146,9 +155,18 @@ const DetailProduct = () => {
         <div>
           <Chatzalo />
         </div>
-        <button className="bt-add">Thêm vào giỏ hàng</button>
-        <button className="bt-buy">Mua ngay</button>
+        <button className="bt-add" onClick={showModal}>
+          Thêm vào giỏ hàng
+        </button>
+        <button className="bt-buy" onClick={showModal}>
+          Mua ngay
+        </button>
       </div>
+      {showPopup && (
+        <Popup>
+          <CheckOut onClose={hiddenModal} />
+        </Popup>
+      )}
     </React.Fragment>
   );
 };

@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import ListShop from "./pages/ListShop";
 import Notfound from "./components/error/404";
 import DetailProduct from "./components/ListShop/Product/DetailProduce";
+import CheckOut from "./components/ListShop/Product/CheckOut";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/list" element={<ListShop />} />
         <Route path="/detail" element={<DetailProduct />} />
-        {/* <Route path="/detail" element={<Detail />} /> */}
+        <Route path="/checkout" element={<CheckOut />} />
       </Routes>
     </BrowserRouter>
   );

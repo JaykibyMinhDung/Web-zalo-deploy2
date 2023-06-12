@@ -1,0 +1,75 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal {
+  position: fixed;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
+  overflow: hidden;
+  width: 100%;
+  height: 90vh;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 200;
+  animation: slide-down 300ms ease-out forwards;
+}
+/* Chỉnh popup */
+.layout_modal {
+  display: flex;
+  justify-content: space-around;
+}
+.exit {
+  cursor: pointer;
+  width: 2%;
+}
+.detail {
+  display: flex;
+  justify-content: space-around;
+  /* width: 100%; */
+}
+/* @media (max-width: 600px) {
+  .modal {
+    overflow: auto;
+    width: 20rem;
+    height: 15rem;
+    top: 12%;
+    left: calc(20% - 4rem);
+    padding: 1rem;
+  }
+  .layout_modal {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 10%;
+  }
+} */
+/* @media (max-width: 768px) {
+    .modal {
+      width: 50rem;
+      left: calc(50% - 18.33rem);
+    }
+  } 
+  
+  */
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

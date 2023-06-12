@@ -1,0 +1,102 @@
+.checkout__modal {
+  position: absolute;
+  bottom: 0%;
+  border-radius: 20px;
+}
+.checkout__modal img {
+  width: 20%;
+}
+
+/* header */
+.checkout__modal header {
+  display: flex;
+  justify-content: space-around;
+
+  margin: 1rem;
+}
+
+.checkout__modal header div {
+  width: 60%;
+  font-weight: 750;
+  overflow: auto;
+}
+.checkout__modal header div button {
+  display: flex;
+  padding-top: 1rem;
+  width: 12rem;
+  color: white;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.801);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+.checkout__modal header div button i {
+  padding-top: 0.2rem;
+  padding-left: 0.8rem;
+  padding-right: 1.4rem;
+}
+
+/* main */
+
+.checkout__modal main {
+  margin: 1rem;
+}
+
+.checkout__modal main p {
+  color: gray;
+}
+
+.checkout__modal main button {
+  margin: 0.2rem;
+  padding: 0.5rem;
+  color: black;
+  background-color: white;
+  border: thin solid gray;
+  outline: none;
+}
+
+.colorClothes button {
+  width: 100px;
+}
+
+.sizeClothes button {
+  width: 50px;
+}
+
+.amountClothes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  margin-left: 5px;
+}
+
+.amountClothes button {
+  width: 30px;
+  margin: 0%;
+  padding-left: 20px;
+  padding-right: 5px;
+}
+
+.amountClothes span {
+  padding: 0.5rem 1.5rem;
+  margin: 0%;
+  text-align: center;
+}
+
+/* footer */
+
+.checkout__modal footer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.checkout__modal footer button {
+  color: white;
+  text-align: center;
+  font-weight: 500;
+  width: 90%;
+  background-color: #f67227;
+  border-radius: 5px;
+  padding: 0.5rem;
+}

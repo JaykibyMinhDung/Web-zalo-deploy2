@@ -18,6 +18,12 @@
   background-color: #fff3c3;
 }
 
+.background__images img {
+  border-radius: 50%;
+  height: 60px !important;
+  margin: auto;
+}
+
 .cards p {
   /* display: inline-block; */
   width: 100%;
@@ -26,10 +32,6 @@
   margin: auto;
 }
 
-.background__images img {
-  border-radius: 50%;
-  margin: auto;
-}
 /* textPlaceholde */
 
 .distanceCards {

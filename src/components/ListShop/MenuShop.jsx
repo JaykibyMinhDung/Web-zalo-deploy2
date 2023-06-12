@@ -18,7 +18,7 @@ const MenuShop = (props) => {
   }
   return (
     <Swiper
-      className="bg-gray-100 distanceCards w-full h-full"
+      className="bg-gray-100 distanceCards w-full h-full box-border"
       spaceBetween={10}
       slidesPerView={5}
       onSlideChange={() => console.log("slide change")}
