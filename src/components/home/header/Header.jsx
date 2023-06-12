@@ -32,20 +32,20 @@ const Header = () => {
             {/* <div className="md:mr-80 md:block lg:hidden hidden">  gap-y-8*/}
             <div className="md:mr-80 md:block block mr-x-% lg:hidden">
               <div className="flex space-x-4 w-fit mt-1">
-                <Menu.Button className="flex rounded-full w-10 h-10 mt-1 bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                <Menu.Button className="flex rounded-full w-8 h-8 mt-1 ml-3 bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                   <span className="sr-only ">Open user menu</span>
                   <img
-                    className="h-10 w-10 rounded-full"
+                    className="h-8 w-8 rounded-full"
                     src={imagesZalo}
                     alt=""
                   />
                 </Menu.Button>
                 <div
-                  style={{ fontSize: "small" }}
+                  style={{ fontSize: "medium" }}
                   className=" text-10xl text-white"
                 >
                   <p>Xin chào,</p>
-                  <h2 className="font-bold">Minh Dũng CG</h2>
+                  <h2 className="font-bold">Minh Dũng Cg</h2>
                 </div>
               </div>
             </div>

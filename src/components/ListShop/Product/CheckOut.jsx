@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "./checkout.css";
 
 const CheckOut = (props) => {
+  const [number, setNumber] = useState(0);
+  const [onClickStyle, setonClickStyle] = useState(false);
+  const chooseStye = () => {
+    if (onClickStyle) {
+      setonClickStyle(false);
+    }
+    if (!onClickStyle) {
+      setonClickStyle(true);
+    }
+  };
+  const plus = () => {
+    setNumber(number + 1);
+  };
+  const minus = () => {
+    if (number > 1) {
+      setNumber(number - 1);
+    }
+  };
+
   const VND = new Intl.NumberFormat("vi-VN", {
     style: "currency",
     currency: "VND",
@@ -13,6 +32,7 @@ const CheckOut = (props) => {
         <img
           src="https://newcdn.onshop.asia/images/narylee/bo-ni-bong-hinh-tho-cute-de-thuong.jpg"
           alt=""
+          className="object-cover object-center"
         />
         <div>
           <p>Bộ đồ mặc nhà cotton áo cộc tay quần sooc ST9043</p>
@@ -24,7 +44,12 @@ const CheckOut = (props) => {
       <main>
         <p>Chọn màu sắc (4 màu sắc)</p>
         <div className="colorClothes">
-          <button>Tím nhạt</button>
+          <button
+            onClick={chooseStye}
+            className={onClickStyle ? "checkout__modal--Active" : ""}
+          >
+            Tím nhạt
+          </button>
           <button>Hồng nấu</button>
           <button>Xanh két</button>
           <button>Biển đậm</button>
@@ -46,15 +71,13 @@ const CheckOut = (props) => {
         </div>
         <div className="amountClothes">
           <p>Số lượng</p>
-          <div style={{ border: "thin solid #f67227" }}>
-            <button>
-              {/* onClick={minus} */}
-              <i class="fa fa-plus" aria-hidden="true"></i>
-            </button>
-            <span className={""}>{0}</span>
-            <button>
-              {/* onClick={plus} */}
+          <div style={{ border: "1px solid #f67227" }}>
+            <button onClick={minus}>
               <i class="fa fa-minus" aria-hidden="true"></i>
+            </button>
+            <span>{number}</span>
+            <button onClick={plus}>
+              <i class="fa fa-plus" aria-hidden="true"></i>
             </button>
           </div>
         </div>

@@ -11,7 +11,7 @@ const MainHome = () => {
       <div
         style={{ fontSize: "small" }}
         // top-64
-        className="absolute left-0 md:left-24 lg:left-20% 2xl:left-96 top-35vh md:top-2/4 w-full md:w-4/5 lg:w-3/5 h-60 rounded-3xl bg-white font-sans"
+        className="absolute left-0 md:left-24 lg:left-20% 2xl:left-96 top-30vh md:top-2/4 w-full md:w-4/5 lg:w-3/5 h-60 rounded-3xl bg-white font-sans"
       >
         {/* Menu */}
         <div className="flex flex-nowrap justify-between text-center mx-3 ml-4 md:mx-8 mt-8">

@@ -16,13 +16,14 @@
   right: 0%;
   overflow: hidden;
   width: 100%;
-  height: 90vh;
+  height: 68vh;
+  /* max-height: calc(100% - 25vh); */
   background-color: white;
   padding: 1rem;
   border-radius: 14px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 200;
-  animation: slide-down 300ms ease-out forwards;
+  animation: slide-up 300ms ease-out forwards;
 }
 /* Chỉnh popup */
 .layout_modal {
@@ -63,13 +64,25 @@
   
   */
 
-@keyframes slide-down {
+@media (max-height: 740px) {
+  .modal {
+    height: 85vh;
+  }
+}
+
+@media (min-height: 750px) and (max-height: 790px) {
+  .modal {
+    height: 76vh;
+  }
+}
+
+@keyframes slide-up {
   from {
-    opacity: 0;
-    transform: translateY(-3rem);
+    /* opacity: 0; */
+    transform: translateY(10rem);
   }
   to {
-    opacity: 1;
+    /* opacity: 1; */
     transform: translateY(0);
   }
 }

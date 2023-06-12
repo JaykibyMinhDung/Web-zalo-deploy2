@@ -14,8 +14,8 @@ module.exports = {
           "0px 10px 12px rgba(0, 0, 0, 0.10)",
         ],
         "6xl": [
-          "0 7px 20px rgba(0,0,0,0.10)",
-          "0px 5px 10px rgba(0, 0, 0, 0.10)",
+          "0 7px 10px rgba(0,0,0,0.10)",
+          "0px 5px 0px rgba(0, 0, 0, 0.10)",
         ],
       },
       fontSize: {
@@ -29,14 +29,19 @@ module.exports = {
       },
       spacing: {
         "10%": "10%",
-        "15vh": "15vh",
+        "10vh": "10vh",
         "20vh": "20vh",
         "12%": "12%",
+        "12vh": "12vh",
+        "15vh": "15vh",
         "15%": "15%",
         "20%": "20%",
         "25%": "25%",
+        "25vh": "25vh",
         "30%": "30%",
         "30vh": "30vh",
+        "30.8vh": "30.8vh",
+        "32vh": "32vh",
         "35vh": "35vh",
         "40vh": "40vh",
         "33%": "33%",
@@ -52,6 +57,9 @@ module.exports = {
         "search-white": "#FDE3D4",
       },
       textColor: {
+        "orange-navbar": "#f67227",
+      },
+      colors: {
         "orange-navbar": "#f67227",
       },
       screens: {

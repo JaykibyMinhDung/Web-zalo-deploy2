@@ -1,22 +1,27 @@
 .checkout__modal {
   position: absolute;
-  bottom: 0%;
+  bottom: 0;
+  top: 0;
   border-radius: 20px;
 }
 .checkout__modal img {
   width: 20%;
 }
 
+.checkout__modal--Active {
+  background-color: #f67227 !important;
+  color: #ffff !important;
+}
+
 /* header */
 .checkout__modal header {
   display: flex;
   justify-content: space-around;
-
   margin: 1rem;
 }
 
 .checkout__modal header div {
-  width: 60%;
+  width: 65%;
   font-weight: 750;
   overflow: auto;
 }
@@ -63,6 +68,7 @@
 }
 
 .amountClothes {
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -72,6 +78,8 @@
 
 .amountClothes button {
   width: 30px;
+  background-color: #ff6d192d !important;
+  border: 0px !important;
   margin: 0%;
   padding-left: 20px;
   padding-right: 5px;
@@ -88,7 +96,7 @@
 .checkout__modal footer {
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .checkout__modal footer button {

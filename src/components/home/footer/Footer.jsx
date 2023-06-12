@@ -33,10 +33,7 @@ function classNames(...classes) {
 
 const Footer = () => {
   return (
-    <Disclosure
-      as="nav"
-      className=" drop-shadow-4xl relative bottom-0 bg-slate-50"
-    >
+    <Disclosure as="nav" className="fixed bottom-0 drop-shadow-4xl bg-slate-50">
       <>
         <div className="mx-auto w-screen h-auto px-2 sm:px-6 lg:px-8 font-sans">
           <div className="relative mx-px flex items-center justify-between">

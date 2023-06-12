@@ -28,7 +28,12 @@ const MenuShop = (props) => {
         <SwiperSlide>
           <div
             onClick={hoveractive}
-            className={"h-28 p-1 cards " + (changeCards ? "bg-white " : "")}
+            className={
+              "h-28 p-1 cards " +
+              (changeCards
+                ? "bg-white text-orange-navbar border-b-2 border-orange-navbar rounded-b-md"
+                : "")
+            }
           >
             <div className="background__images">
               <img src={e.imageUrl} alt="error" width={"100%"} loading="lazy" />
