@@ -4,6 +4,8 @@ import { ReactComponent as Chatzalo } from "../../../icon/chatText.svg";
 import { FaChevronLeft } from "react-icons/fa";
 
 import Option from "../../home/header/Option";
+import { Slide } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
 import Popup from "../Modal/Modal";
 import "./detail.css";
 import { useNavigate } from "react-router-dom";
@@ -21,6 +23,18 @@ const DetailProduct = () => {
   const hiddenModal = () => {
     return setShowPopup(false);
   };
+
+  const slideImages = [
+    {
+      url: "https://newcdn.onshop.asia/images/narylee/bo-ni-bong-hinh-tho-cute-de-thuong.jpg",
+    },
+    {
+      url: "https://cdn.ttgtmedia.com/rms/onlineimages/hp_elitebook_mobile.jpg",
+    },
+    {
+      url: "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
+    },
+  ];
 
   const VND = new Intl.NumberFormat("vi-VN", {
     style: "currency",
@@ -42,11 +56,22 @@ const DetailProduct = () => {
         </div>
       </div>
       <div className="detail__backgroundimage">
-        <img
+        {/* <img
           src="https://newcdn.onshop.asia/images/narylee/bo-ni-bong-hinh-tho-cute-de-thuong.jpg"
           alt="lỗi"
-        />
-        <div style={{ paddingLeft: "1.5rem" }}>
+        /> */}
+        <div>
+          <div className="slideshow-container">
+            <Slide autoplay={false}>
+              {slideImages.map((slideImage, index) => (
+                <div key={index}>
+                  <img src={slideImage.url} alt="" />
+                </div>
+              ))}
+            </Slide>
+          </div>
+        </div>
+        <div style={{ paddingLeft: "1.2rem", paddingTop: "0.5rem" }}>
           <h2>Bộ đồ mặc nhà cotton áo cộc quần sooc ST9043</h2>
           <p className="price">{VND.format(6452200)}</p>
         </div>

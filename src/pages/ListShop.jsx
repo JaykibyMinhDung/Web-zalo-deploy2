@@ -6,6 +6,7 @@ import MenuShop from "../components/ListShop/MenuShop";
 
 const productsTemplate = [
   {
+    id: 1,
     nameProduct: "Chai lọ",
     discount: "10%",
     imageUrl:
@@ -16,6 +17,7 @@ const productsTemplate = [
     oldPrice: 439000,
   },
   {
+    id: 2,
     nameProduct: "Bình giữ nhiệt",
     discount: "10%",
     imageUrl:
@@ -26,6 +28,7 @@ const productsTemplate = [
     oldPrice: 648893,
   },
   {
+    id: 3,
     nameProduct: "Giấy nhớ",
     discount: "10%",
     imageUrl:
@@ -36,6 +39,7 @@ const productsTemplate = [
     oldPrice: 432432,
   },
   {
+    id: 4,
     nameProduct: "Sổ",
     discount: "10%",
     imageUrl:
@@ -46,6 +50,7 @@ const productsTemplate = [
     oldPrice: 968600,
   },
   {
+    id: 5,
     nameProduct: "Máy tính",
     discount: "10%",
     imageUrl:
@@ -56,6 +61,7 @@ const productsTemplate = [
     oldPrice: 756444,
   },
   {
+    id: 6,
     nameProduct: "Laptop",
     discount: "10%",
     imageUrl:
@@ -66,6 +72,7 @@ const productsTemplate = [
     oldPrice: 756444,
   },
   {
+    id: 7,
     nameProduct: "Laptop2",
     discount: "10%",
     imageUrl:
@@ -76,6 +83,7 @@ const productsTemplate = [
     oldPrice: 756444,
   },
   {
+    id: 8,
     nameProduct: "Máy tính",
     discount: "10%",
     imageUrl:

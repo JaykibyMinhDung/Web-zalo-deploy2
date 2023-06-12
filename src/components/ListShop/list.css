@@ -14,20 +14,30 @@
   padding-right: 2%;
 }
 
-.background__images {
+/* .background__images {
+  width: 10%;
   background-color: #fff3c3;
+} */
+.background__images div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  height: 150px;
 }
 
 .background__images img {
-  border-radius: 50%;
-  height: 50px !important;
+  border-radius: 60%;
+  height: 55px !important;
+  padding: 5px;
   margin: auto;
 }
 
 .cards p {
   /* display: inline-block; */
   width: 100%;
-  font-size: small;
+  padding-top: 0.5rem;
+  font-size: x-small;
   text-align: center;
   margin: auto;
 }
@@ -36,4 +46,15 @@
 
 .distanceCards {
   padding: 0.5rem !important;
+}
+
+/* MenuShop */
+
+.list__categoria--active {
+  /* bg-white text-orange-navbar border-b-2 border-orange-navbar rounded-b-md */
+  background-color: white;
+  color: #f67227;
+  border-bottom: 2px solid #f67227;
+  border-bottom-right-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
 }

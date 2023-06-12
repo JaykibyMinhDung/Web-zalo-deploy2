@@ -31,6 +31,7 @@ ul li {
   left: 0%;
   right: 0%;
   padding: 0.8rem;
+  z-index: 50;
 }
 
 .detail__headers {
@@ -62,7 +63,7 @@ ul li {
 }
 .detail__backgroundimage div {
   background-color: rgb(255, 255, 255);
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
 }
 .detail__background {
   list-style-position: inside;
