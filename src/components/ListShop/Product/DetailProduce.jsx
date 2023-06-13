@@ -191,7 +191,7 @@ const DetailProduct = () => {
         </button>
       </div>
       {showPopup && (
-        <Popup>
+        <Popup onClose={hiddenModal}>
           <CheckOut onClose={hiddenModal} />
         </Popup>
       )}

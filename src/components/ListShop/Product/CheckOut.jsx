@@ -39,7 +39,7 @@ const CheckOut = (props) => {
           <p>Bộ đồ mặc nhà cotton áo cộc tay quần sooc ST9043</p>
           <p style={{ color: "#f67227" }}>{VND.format(439000)}</p>
         </div>
-        '<button onClick={props.onClose}>X</button>
+        <button onClick={props.onClose}>X</button>
       </header>
       <hr />
       <main>
