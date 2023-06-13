@@ -11,16 +11,16 @@ import { ReactComponent as User } from "../../../icon/user.svg";
 import "./footer.css";
 
 const navigation = [
-  { name: "Trang chủ", href: "#", current: false, icon: <PageHome /> },
+  { name: "Trang chủ", href: "/", current: false, icon: <PageHome /> },
   {
     name: "Danh mục",
     href: "/list",
     current: false,
     icon: <ListIcon />,
   },
-  { name: "Giỏ hàng", href: "#z", current: false, icon: <CartIcon /> },
-  { name: "Tin nhắn", href: "#", current: false, icon: <ChatText /> },
-  { name: "Cá nhân", href: "#", current: false, icon: <User /> },
+  { name: "Giỏ hàng", href: "/cart", current: false, icon: <CartIcon /> },
+  { name: "Tin nhắn", href: "/message", current: false, icon: <ChatText /> },
+  { name: "Cá nhân", href: "/personal", current: false, icon: <User /> },
 ];
 
 function classNames(...classes) {
@@ -45,7 +45,7 @@ const Footer = () => {
                   // flex-col
                   style={({ isActive, isPending }) => {
                     return {
-                      color: isActive ? "black" : "#f67227",
+                      color: isActive ? "#f67227" : "black",
                     };
                   }}
                   aria-current={item.current ? "page" : undefined}

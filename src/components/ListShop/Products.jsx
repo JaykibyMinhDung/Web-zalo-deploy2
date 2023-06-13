@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./products.css";
 
 const Products = (props) => {
   const VND = new Intl.NumberFormat("vi-VN", {
@@ -18,7 +19,7 @@ const Products = (props) => {
             <Link to="/detail" className="group p-3 border">
               <div className="relative aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 border">
                 <div className="absolute top-0 left-0 text-white p-2 bg-orange-navbar rounded-ss rounded-ee-lg">
-                  {e.discount}
+                  -{e.discount}
                 </div>
                 <img
                   src={e.imageUrl}
@@ -26,21 +27,16 @@ const Products = (props) => {
                   className="h-full w-full object-cover object-center group-hover:opacity-75"
                 />
               </div>
-              <h3 className="mt-4 mx-1 text-sm text-gray-700">
-                {e.nameProduct}
-              </h3>
+              <h3 className="products__title">{e.nameProduct}</h3>
               <div className="flex justify-between items-center">
-                <p
-                  style={{ fontSize: "small" }}
-                  className="mt-1 text-lg font-medium text-gray-900"
-                >
-                  {VND.format(e.price)}
-                </p>
+                <div>
+                  <p className="products__price">{VND.format(e.price)}</p>
+                </div>
                 <div className="mt-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
+                    width="16"
+                    height="16"
                     fill="rgb(255, 102, 0)"
                     viewBox="0 0 24 24"
                   >
@@ -48,6 +44,9 @@ const Products = (props) => {
                   </svg>
                 </div>
               </div>
+              <del style={{ fontSize: "small", color: "rgb(201, 201, 201)" }}>
+                {VND.format(e.price)}
+              </del>
             </Link>
           ))}
 

@@ -14,10 +14,10 @@
   padding-right: 2%;
 }
 
-/* .background__images {
-  width: 10%;
-  background-color: #fff3c3;
-} */
+.background__images {
+  /* width: 10%; */
+  background-color: #fff6d4;
+}
 .background__images div {
   display: flex;
   align-items: center;
@@ -28,7 +28,7 @@
 
 .background__images img {
   border-radius: 60%;
-  height: 55px !important;
+  height: auto !important;
   padding: 5px;
   margin: auto;
 }

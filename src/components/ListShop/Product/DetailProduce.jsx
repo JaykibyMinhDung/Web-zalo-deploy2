@@ -29,7 +29,7 @@ const DetailProduct = () => {
       url: "https://newcdn.onshop.asia/images/narylee/bo-ni-bong-hinh-tho-cute-de-thuong.jpg",
     },
     {
-      url: "https://cdn.ttgtmedia.com/rms/onlineimages/hp_elitebook_mobile.jpg",
+      url: "https://vn-live-03.slatic.net/p/7/ao-hoodie-tai-tho-sieu-cute-gianh-cho-be-1727-21104932-2a8274b96f9c87e88a90f93d11b4a7f7.jpg",
     },
     {
       url: "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
@@ -60,17 +60,20 @@ const DetailProduct = () => {
           src="https://newcdn.onshop.asia/images/narylee/bo-ni-bong-hinh-tho-cute-de-thuong.jpg"
           alt="lỗi"
         /> */}
-        <div>
+        <>
           <div className="slideshow-container">
             <Slide autoplay={false}>
               {slideImages.map((slideImage, index) => (
-                <div key={index}>
+                <div key={index} className="relative">
                   <img src={slideImage.url} alt="" />
+                  <span className="totalImage">
+                    {index + 1 + "/" + slideImages.length}
+                  </span>
                 </div>
               ))}
             </Slide>
           </div>
-        </div>
+        </>
         <div style={{ paddingLeft: "1.2rem", paddingTop: "0.5rem" }}>
           <h2>Bộ đồ mặc nhà cotton áo cộc quần sooc ST9043</h2>
           <p className="price">{VND.format(6452200)}</p>
@@ -127,7 +130,7 @@ const DetailProduct = () => {
           </ul>
           <p>
             <b>Tư vấn chọn size:</b> Tham khảo bảng chọn size của sunfly. Hoặc
-            chat để được nhân viên tư vaná thêm veè size phù hợp.
+            chat để được nhân viên tư vấn thêm về size phù hợp.
           </p>
           <div>
             <img

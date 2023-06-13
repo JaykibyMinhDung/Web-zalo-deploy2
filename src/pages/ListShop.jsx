@@ -54,10 +54,10 @@ const productsTemplate = [
     nameProduct: "Máy tính",
     discount: "10%",
     imageUrl:
-      "https://cdn.ttgtmedia.com/rms/onlineimages/hp_elitebook_mobile.jpg",
+      "https://newcdn.onshop.asia/images/narylee/bo-ni-bong-hinh-tho-cute-de-thuong.jpg",
     idProducts: "#",
     price: 100000000,
-    topic: "Đồ dùng công nghệ",
+    topic: "Quần áo",
     oldPrice: 756444,
   },
   {
@@ -65,10 +65,10 @@ const productsTemplate = [
     nameProduct: "Laptop",
     discount: "10%",
     imageUrl:
-      "https://cdn.ttgtmedia.com/rms/onlineimages/hp_elitebook_mobile.jpg",
+      "https://newcdn.onshop.asia/images/narylee/bo-ni-bong-hinh-tho-cute-de-thuong.jpg",
     idProducts: "#",
     price: 1003230000,
-    topic: "Đồ dùng công nghệ",
+    topic: "Quần áo",
     oldPrice: 756444,
   },
   {
@@ -76,10 +76,10 @@ const productsTemplate = [
     nameProduct: "Laptop2",
     discount: "10%",
     imageUrl:
-      "https://cdn.ttgtmedia.com/rms/onlineimages/hp_elitebook_mobile.jpg",
+      "https://vn-live-03.slatic.net/p/7/ao-hoodie-tai-tho-sieu-cute-gianh-cho-be-1727-21104932-2a8274b96f9c87e88a90f93d11b4a7f7.jpg",
     idProducts: "#",
     price: 143400000,
-    topic: "Đồ dùng công nghệ",
+    topic: "Quần áo",
     oldPrice: 756444,
   },
   {
@@ -87,10 +87,10 @@ const productsTemplate = [
     nameProduct: "Máy tính",
     discount: "10%",
     imageUrl:
-      "https://cdn.ttgtmedia.com/rms/onlineimages/hp_elitebook_mobile.jpg",
+      "https://vn-live-03.slatic.net/p/7/ao-hoodie-tai-tho-sieu-cute-gianh-cho-be-1727-21104932-2a8274b96f9c87e88a90f93d11b4a7f7.jpg",
     idProducts: "#",
     price: 100000000,
-    topic: "Đồ dùng công nghệ",
+    topic: "Quần áo",
     oldPrice: 756444,
   },
 ];
