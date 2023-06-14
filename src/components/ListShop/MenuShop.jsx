@@ -16,8 +16,8 @@ const MenuShop = (props) => {
       onSwiper={(swiper) => console.log(swiper)}
     >
       {props.products.map((product) => (
-        <SwiperSlide>
-          <Category informationCategory={product} id={product.id} />
+        <SwiperSlide key={product.id}>
+          <Category informationCategory={product} />
         </SwiperSlide>
       ))}
     </Swiper>

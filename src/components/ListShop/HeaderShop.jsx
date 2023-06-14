@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ReactComponent as HomeIcon } from "../../icon/iconhome.svg";
 import Option from "../home/header/Option";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,11 @@ import "./list.css";
 
 const HeaderShop = () => {
   const navigate = useNavigate();
+
+  const [searchProduct, setSearchProduct] = useState();
+  const inputSearch = (event) => {
+    setSearchProduct(event.target.value);
+  };
 
   const BackHome = () => {
     navigate("/");
@@ -23,8 +28,9 @@ const HeaderShop = () => {
         <div className="flex w-full sm:w-2/4 relative">
           <input
             className="bg-search-white outline-none w-full placeholder:text-xs rounded-2xl placeholder:text-center text-center pl-6 py-1"
+            onChange={inputSearch}
             type="text"
-            value=""
+            value={searchProduct}
             placeholder="Tìm kiếm sản phẩm"
           />
           <div className="absolute left-3 top-1">

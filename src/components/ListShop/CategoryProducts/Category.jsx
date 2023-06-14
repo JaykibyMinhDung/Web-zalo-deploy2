@@ -4,7 +4,7 @@ import "../list.css";
 
 const Category = (props) => {
   const [changeCards, setChangeCards] = useState(false);
-  const { informationCategory, id } = props;
+  const { informationCategory } = props;
   //   const [test, setTest] = useState(informationCategory.topic);
 
   //   const OldTopic = localStorage.getItem("topic");
