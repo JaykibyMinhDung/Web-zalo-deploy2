@@ -15,8 +15,8 @@ import ListShop from "./pages/ListShop";
 import Notfound from "./components/error/404";
 import DetailProduct from "./components/ListShop/Product/DetailProduce";
 import CheckOut from "./components/ListShop/Product/CheckOut";
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
-import receiveToken from "./store/token";
+// import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import { receiveToken } from "./store/token";
 
 function App() {
   // const [notification, setNotification] = useState("");
@@ -47,7 +47,7 @@ function App() {
         }
         // setNotification(dataUser.data.meta.message);
 
-        localStorage.setItem("token", dataUser.data.data.token);
+        // localStorage.setItem("token", dataUser.data.data.token);
         localStorage.setItem("expires_in", dataUser.data.data.expires_in);
       })
       .then(() => {
@@ -59,6 +59,7 @@ function App() {
   useEffect(() => {
     fetchToken();
   }, []);
+
   if (isLoadding) {
     return (
       <div style={{ textAlign: "center", fontSize: "150%" }}>Loadding...</div>
@@ -69,6 +70,7 @@ function App() {
   //   return <div style={{ textAlign: "center" }}>Server Error</div>;
   // }
   return (
+    // Nếu thêm ở đây nó sẽ không chạy được
     // <RecoilRoot>
     <BrowserRouter>
       <Routes>

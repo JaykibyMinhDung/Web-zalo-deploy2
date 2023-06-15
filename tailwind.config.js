@@ -25,6 +25,7 @@ module.exports = {
         "15%": "15%",
       },
       height: {
+        "5.5rem": "5.5rem",
         "70%": "70%",
       },
       margin: {
@@ -67,7 +68,8 @@ module.exports = {
         "orange-navbar": "#f67227",
       },
       screens: {
-        adr: "320px",
+        "adr-300": "300px",
+        "galaxyFold-280": "280px",
       },
     },
   },

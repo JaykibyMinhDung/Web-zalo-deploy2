@@ -18,25 +18,25 @@ const HeaderMenu = () => {
         {/* Menu */}
         <div className="flex flex-nowrap justify-between text-center mx-2 mt-8">
           <div>
-            <span class="inline-flex items-center rounded-full bg-red-50 px-2 py-2 text-xs font-medium text-orange-navbar ring-1 ring-inset ring-red-600/10">
+            <span className="inline-flex items-center rounded-full bg-red-50 px-2 py-2 text-xs font-medium text-orange-navbar ring-1 ring-inset ring-red-600/10">
               <StartIcon className="w-7 sm:w-14" />
             </span>
             <p className="w-18 sm:w-20">Tích điểm</p>
           </div>
           <div>
-            <span class="inline-flex items-center rounded-full bg-red-50 px-2 py-2 text-xs font-medium text-orange-navbar ring-1 ring-inset ring-red-600/10">
+            <span className="inline-flex items-center rounded-full bg-red-50 px-2 py-2 text-xs font-medium text-orange-navbar ring-1 ring-inset ring-red-600/10">
               <GiftIcon className="w-7 sm:w-14" />
             </span>
             <p className="w-18 sm:w-20">Đổi thưởng</p>
           </div>
           <div>
-            <span class="inline-flex items-center rounded-full bg-red-50 px-2 py-2 text-xs font-medium text-orange-navbar ring-1 ring-inset ring-red-600/10">
+            <span className="inline-flex items-center rounded-full bg-red-50 px-2 py-2 text-xs font-medium text-orange-navbar ring-1 ring-inset ring-red-600/10">
               <CartIcon className="w-7 sm:w-14" />
             </span>
             <p className="w-18 sm:w-20">Đặt hàng</p>
           </div>
           <div>
-            <span class="inline-flex items-center rounded-full bg-red-50 px-2 py-2 text-xs font-medium text-orange-navbar ring-1 ring-inset ring-red-600/10">
+            <span className="inline-flex items-center rounded-full bg-red-50 px-2 py-2 text-xs font-medium text-orange-navbar ring-1 ring-inset ring-red-600/10">
               <ContactIcon className="w-7 sm:w-14" />
             </span>
             <p className="w-18 sm:w-20">Liên hệ</p>

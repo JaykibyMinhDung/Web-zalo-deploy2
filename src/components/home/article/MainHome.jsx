@@ -23,19 +23,19 @@ const MainHome = () => {
             <p className="w-20 sm:w-20">Mua hàng</p>
           </NavLink>
           <NavLink to="">
-            <span class="inline-flex items-center rounded-full px-2 py-1 text-xs font-medium text-orange-navbar ring-1 ring-inset ring-red-600/10">
+            <span className="inline-flex items-center rounded-full px-2 py-1 text-xs font-medium text-orange-navbar ring-1 ring-inset ring-red-600/10">
               <GiftIcon className="w-7 sm:w-14" style={{ color: "#f67227" }} />
             </span>
             <p className="w-20 sm:w-20">Ưu đãi</p>
           </NavLink>
           <NavLink to="#">
-            <span class="inline-flex items-center rounded-full px-2 py-1 text-xs font-medium text-orange-navbar ring-1 ring-inset ring-red-600/10">
+            <span className="inline-flex items-center rounded-full px-2 py-1 text-xs font-medium text-orange-navbar ring-1 ring-inset ring-red-600/10">
               <CrowIcon className="w-7 sm:w-14" />
             </span>
             <p className="w-20 sm:w-20">Quyền lợi</p>
           </NavLink>
           <NavLink to="#">
-            <span class="inline-flex items-center rounded-full px-2 py-1 text-xs font-medium text-orange-navbar ring-1 ring-inset ring-red-600/10">
+            <span className="inline-flex items-center rounded-full px-2 py-1 text-xs font-medium text-orange-navbar ring-1 ring-inset ring-red-600/10">
               <DocumentIcon className="w-7 sm:w-14" />
             </span>
             <p className="w-20 sm:w-20">Lịch sử </p>

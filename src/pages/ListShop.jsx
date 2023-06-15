@@ -105,6 +105,12 @@ const ListShop = () => {
         </div>
       </div>
       <Products products={productsTemplate} />
+      {/* 
+        Menu shop sẽ thao tác với product (click sẽ kích hoạt 2 chức năng: class active và lọc dữ liệu),
+        menu shop sẽ lấy danh sách nhóm sản phẩm sau đó chuyền vào products
+        products sẽ lọc các dữ liệu trong data truyền về
+        Hiển thị dữ liệu lọc được ra screen
+      */}
     </div>
   );
 };

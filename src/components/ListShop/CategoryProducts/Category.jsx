@@ -1,41 +1,57 @@
 import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+// import { Swiper, SwiperSlide } from "swiper/react";
+import client from "../../../util/baseUrl";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { receiveToken, receiveKeyCategory } from "../../../store/token";
+
 import "../list.css";
+import { NavLink } from "react-router-dom";
 
 const Category = (props) => {
   const [changeCards, setChangeCards] = useState(false);
-  const { informationCategory } = props;
+  const keyCategoryOld = useRecoilValue(receiveKeyCategory);
+  const { informationCategory, id, active, changeStatus } = props;
+  const keyCategory = useSetRecoilState(receiveKeyCategory);
   //   const [test, setTest] = useState(informationCategory.topic);
 
-  //   const OldTopic = localStorage.getItem("topic");
+  async function activeCategory() {
+    // if (!changeCards) {
+    // if (id === informationCategory.id) {
+    // setChangeCards(false);
+    changeStatus(informationCategory.id);
+    keyCategory(informationCategory.id);
+    // }
+    // }
 
-  function activeCategory() {
-    if (!changeCards) {
-      setChangeCards(true);
-      //   localStorage.setItem("topic", informationCategory.topic);
+    if (active) {
+      changeStatus(false);
+      keyCategory("");
     }
-    // if (OldTopic !== informationCategory.topic) {
-    if (changeCards) {
-      setChangeCards(false);
-    }
+    // return setChangeCards(false);
     // console.log(informationCategory.topic);
   }
   return (
     <div
       onClick={activeCategory}
       className={
-        "h-28 p-1 cards " + (changeCards ? "list__categoria--active" : "")
+        "adr-300:h-28 galaxyFold-280:h-5.5rem p-1 cards " +
+        (active === informationCategory.id ? "list__categoria--active" : "")
       }
     >
-      <div className="background__images">
-        <img
-          src={informationCategory.imageUrl}
-          alt="error"
-          width={"100%"}
-          loading="lazy"
-        />
-      </div>
-      <p>{informationCategory.topic}</p>
+      {!informationCategory && <div>Loadding...</div>}
+      {informationCategory && (
+        <>
+          <div className="background__images">
+            <img
+              src={informationCategory.picture}
+              alt="error"
+              width={"100%"}
+              loading="lazy"
+            />
+          </div>
+          <p>{informationCategory.name}</p>
+        </>
+      )}
     </div>
   );
 };

@@ -6,9 +6,18 @@ import {
   useRecoilValue,
 } from "recoil";
 
-const receiveToken = atom({
-  key: "tokenUser",
+export const receiveToken = atom(
+  {
+    key: "tokenUser",
+    default: "",
+  }
+  // {
+  //   key: "expires_in",
+  //   default: ""
+  // }
+);
+
+export const receiveKeyCategory = atom({
+  key: "CategoryProducts",
   default: "",
 });
-
-export default receiveToken;
