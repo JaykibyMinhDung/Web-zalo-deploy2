@@ -14,20 +14,6 @@ const MenuShop = () => {
   const [checked, setChecked] = useState(null);
 
   const token2 = useRecoilValue(receiveToken);
-
-  // client
-  //   .get(
-  //     "api/loyalty-app/sell/list-product?page=1&search[branch_id]=1&pageLimit=50&filter_sort=price_asc",
-  //     {
-  //       headers: {
-  //         Authorization: "Bearer " + token2,
-  //       },
-  //     }
-  //   )
-  //   .then((data) => {
-  //     console.log(data);
-  //   });
-
   const getDataCategory = async () => {
     client
       .get("/api/loyalty-app/product-category?strSearch=&is_suggest=1", {
@@ -63,7 +49,6 @@ const MenuShop = () => {
           <Category
             informationCategory={product}
             key={product.id}
-            id={product.id}
             active={checked}
             changeStatus={setChecked}
           />

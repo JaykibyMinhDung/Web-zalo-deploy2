@@ -10,6 +10,11 @@ import "./products.css";
 const Products = (props) => {
   const token2 = useRecoilValue(receiveToken);
   const keyCategory = useRecoilValue(receiveKeyCategory);
+  const VND = new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+    currencyDisplay: "code",
+  });
   const { isLoading, isError, data } = useQuery("products", () =>
     client({
       method: "GET",
@@ -18,34 +23,26 @@ const Products = (props) => {
         Authorization: "Bearer " + token2,
       },
     }).then((results) => {
-      // console.log(results);
+      console.log(results);
       return results.data;
     })
   );
 
   const filterProducts = () => {
+    if (isLoading) {
+      return <div>Loadding...</div>;
+    }
     return data.data.filter((e) => e.product_id === keyCategory);
   };
-  if (isLoading) {
-    return <div>Loadding...</div>;
-  }
   if (isError) {
     return <div>Server is updating, please wait a minute</div>;
   }
 
-  const VND = new Intl.NumberFormat("vi-VN", {
-    style: "currency",
-    currency: "VND",
-    currencyDisplay: "code",
-  });
-
-  console.log(keyCategory);
+  console.log(data);
   return (
     <div className="relative  top-44 bg-white">
-      {/* max-w-2xl */}
       <div className="mx-auto  px-4 py-8 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className="sr-only">Products</h2>
-        {/* gap-x-6 gap-y-10 */}
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 xl:gap-x-8">
           {!keyCategory
             ? data.data.map((e) => (

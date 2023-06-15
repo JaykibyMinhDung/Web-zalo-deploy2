@@ -5,30 +5,15 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { receiveToken, receiveKeyCategory } from "../../../store/token";
 
 import "../list.css";
-import { NavLink } from "react-router-dom";
 
 const Category = (props) => {
-  const [changeCards, setChangeCards] = useState(false);
-  const keyCategoryOld = useRecoilValue(receiveKeyCategory);
-  const { informationCategory, id, active, changeStatus } = props;
+  const { informationCategory, active, changeStatus } = props;
   const keyCategory = useSetRecoilState(receiveKeyCategory);
-  //   const [test, setTest] = useState(informationCategory.topic);
 
-  async function activeCategory() {
-    // if (!changeCards) {
-    // if (id === informationCategory.id) {
-    // setChangeCards(false);
+  function activeCategory() {
     changeStatus(informationCategory.id);
+    // nhận id từ đây để chuyển sang products
     keyCategory(informationCategory.id);
-    // }
-    // }
-
-    if (active) {
-      changeStatus(false);
-      keyCategory("");
-    }
-    // return setChangeCards(false);
-    // console.log(informationCategory.topic);
   }
   return (
     <div
