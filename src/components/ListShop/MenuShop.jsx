@@ -27,7 +27,6 @@ const MenuShop = () => {
       })
       .catch((err) => console.log(err));
   };
-  console.log(checked);
 
   useEffect(() => {
     getDataCategory();

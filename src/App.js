@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import client from "./util/baseUrl";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
   RecoilRoot,
@@ -24,41 +24,38 @@ function App() {
     "286024079704af9dedf4f893320733517211603af00a29ec34cb0e04699c86bd";
   const password = "35F33ECAB48CF3672EE70D92AE6E5957";
   // Lấy thông tin người dùng, Xác nhận tài khoản người dùng, valid tài khoản
-  const fetchToken = () => {
-    axios({
+  const fetchToken = async () => {
+    const res = await client({
       method: "GET",
       url: "https://api-nextcrm.nextcrm.vn/api/auth/token",
       auth: {
         username: userName,
         password: password,
       },
-    }).then((dataUser) => {
-      setToken(dataUser.data.data.token);
-      if (!dataUser.data) {
-        throw new Error("Not found user!");
-      }
-      localStorage.setItem("expires_in", dataUser.data.data.expires_in);
     });
-  };
-  const { data, isLoadding, isError } = useQuery("tokenUser", fetchToken);
 
-  if (isLoadding) {
+    setToken(res.data.data.token);
+    localStorage.setItem("expires_in", res.data.data.expires_in);
+    return res.data.data;
+  };
+  const { data, isLoading, error } = useQuery("tokenUser", fetchToken);
+  if (isLoading) {
     return (
       <div style={{ textAlign: "center", fontSize: "150%" }}>Loadding...</div>
     );
   }
+  console.log(data);
 
-  if (isError) {
+  if (error) {
     return <div style={{ textAlign: "center" }}>Server Error</div>;
   }
   return (
     // Nếu thêm ở đây nó sẽ không chạy được
-
     <BrowserRouter>
       <Routes>
         <Route path="*" element={<Notfound />} />
         <Route path="/" element={<HomePage />} />
-        <Route path="/list" element={<ListShop lockpage={isLoadding} />} />
+        <Route path="/list" element={<ListShop lockpage={isLoading} />} />
         <Route path="/detail" element={<DetailProduct />} />
         <Route path="/checkout" element={<CheckOut />} />
       </Routes>
@@ -67,15 +64,3 @@ function App() {
 }
 
 export default App;
-
-// Lấy token sau khi nhập tài khoản
-// fetch("https://api-nextcrm-v2.nextcrm.vn/api/auth/token")
-//   .then((dataUser) => {
-//     if (!dataUser) {
-//       throw new Error("Not found user!");
-//     }
-//     setNotification(dataUser.meta.message);
-//     localStorage.setItem("token", dataUser.data.token);
-//     localStorage.setItem("expires_in", dataUser.data.expires_in);
-//   })
-//   .catch((err) => console.log(err));

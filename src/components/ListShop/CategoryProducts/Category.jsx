@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { Swiper, SwiperSlide } from "swiper/react";
 import client from "../../../util/baseUrl";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { receiveToken, receiveKeyCategory } from "../../../store/token";

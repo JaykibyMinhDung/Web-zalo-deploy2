@@ -15,30 +15,47 @@ const Products = (props) => {
     currency: "VND",
     currencyDisplay: "code",
   });
-  const { isLoading, isError, data } = useQuery("products", () =>
-    client({
-      method: "GET",
-      url: "api/loyalty-app/sell/list-product?page=1&search[branch_id]=1&pageLimit=50&filter_sort=price_asc",
-      headers: {
-        Authorization: "Bearer " + token2,
-      },
-    }).then((results) => {
-      console.log(results);
-      return results.data;
-    })
-  );
+  // const { isLoading, isError, data } = useQuery({
+  //   queryKey: ["products"],
+  //   queryFn: () =>
+  //     client({
+  //       method: "GET",
+  //       url: "api/loyalty-app/sell/list-product?page=1&search[branch_id]=1&pageLimit=50&filter_sort=price_asc",
+  //       headers: {
+  //         Authorization: "Bearer " + token2,
+  //       },
+  //     })
+  //       .then((results) => {
+  //         console.log(results);
+  //       })
+  //       .then((product) => product.data),
+  // });
+
+  const { isLoading, error, data, isFetching } = useQuery({
+    queryKey: ["productsData"],
+    queryFn: () =>
+      client
+        .get(
+          "api/loyalty-app/sell/list-product?page=1&search[category_id]=4217&pageLimit=50&filter_sort=price_asc",
+          {
+            headers: {
+              Authorization: "Bearer " + token2,
+            },
+          }
+        )
+        .then((res) => res.data),
+  });
+
+  if (isLoading) return "Loading...";
 
   const filterProducts = () => {
-    if (isLoading) {
-      return <div>Loadding...</div>;
-    }
     return data.data.filter((e) => e.product_id === keyCategory);
   };
-  if (isError) {
-    return <div>Server is updating, please wait a minute</div>;
-  }
 
   console.log(data);
+
+  if (error) return "An error has occurred: " + error.message;
+
   return (
     <div className="relative  top-44 bg-white">
       <div className="mx-auto  px-4 py-8 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
