@@ -5,7 +5,9 @@ import Products from "../components/ListShop/Products";
 import MenuShop from "../components/ListShop/MenuShop";
 
 const ListShop = (props) => {
-  console.log(props);
+  // console.log(props);
+  console.log("listPage");
+
   return (
     <React.Fragment>
       {!props.lockpage && (
@@ -16,11 +18,11 @@ const ListShop = (props) => {
               <MenuShop />
             </div>
           </div>
-          <Products />
+          <Products token={props.token} />
         </>
       )}
     </React.Fragment>
   );
 };
 
-export default ListShop;
+export default React.memo(ListShop);

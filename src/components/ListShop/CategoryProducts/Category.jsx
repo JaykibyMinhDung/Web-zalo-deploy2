@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import client from "../../../util/baseUrl";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { receiveToken, receiveKeyCategory } from "../../../store/token";
+import { receiveKeyCategory } from "../../../store/token";
 
 import "../list.css";
 
 const Category = (props) => {
   const { informationCategory, active, changeStatus } = props;
+  // cài lại category
   const keyCategory = useSetRecoilState(receiveKeyCategory);
 
-  function activeCategory() {
+  async function activeCategory() {
     changeStatus(informationCategory.id);
     // nhận id từ đây để chuyển sang products
     keyCategory(informationCategory.id);
+    console.log("Category");
   }
   return (
     <div

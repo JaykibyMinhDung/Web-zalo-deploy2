@@ -17,6 +17,7 @@ import DetailProduct from "./components/ListShop/Product/DetailProduce";
 import CheckOut from "./components/ListShop/Product/CheckOut";
 import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 import { receiveToken } from "./store/token";
+import Cart from "./components/cart/Cart";
 
 function App() {
   const setToken = useSetRecoilState(receiveToken);
@@ -33,7 +34,6 @@ function App() {
         password: password,
       },
     });
-
     setToken(res.data.data.token);
     localStorage.setItem("expires_in", res.data.data.expires_in);
     return res.data.data;
@@ -44,7 +44,7 @@ function App() {
       <div style={{ textAlign: "center", fontSize: "150%" }}>Loadding...</div>
     );
   }
-  console.log(data);
+  // console.log(data);
 
   if (error) {
     return <div style={{ textAlign: "center" }}>Server Error</div>;
@@ -55,7 +55,11 @@ function App() {
       <Routes>
         <Route path="*" element={<Notfound />} />
         <Route path="/" element={<HomePage />} />
-        <Route path="/list" element={<ListShop lockpage={isLoading} />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/list"
+          element={<ListShop lockpage={isLoading} token={data.token} />}
+        />
         <Route path="/detail" element={<DetailProduct />} />
         <Route path="/checkout" element={<CheckOut />} />
       </Routes>

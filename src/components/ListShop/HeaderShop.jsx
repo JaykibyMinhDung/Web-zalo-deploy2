@@ -2,19 +2,26 @@ import React, { useState } from "react";
 import { ReactComponent as HomeIcon } from "../../icon/iconhome.svg";
 import Option from "../home/header/Option";
 import { useNavigate } from "react-router-dom";
+import { receiveKeyCategory } from "../../store/token";
+import { useSetRecoilState } from "recoil";
 
 // import Style from "./list.css";
 import "./list.css";
 
 const HeaderShop = () => {
+  const keyCategory = useSetRecoilState(receiveKeyCategory);
+
   const navigate = useNavigate();
 
   const [searchProduct, setSearchProduct] = useState();
   const inputSearch = (event) => {
+    console.log("Header");
+
     setSearchProduct(event.target.value);
   };
 
   const BackHome = () => {
+    keyCategory("");
     navigate("/");
   };
   return (
@@ -56,4 +63,4 @@ const HeaderShop = () => {
   );
 };
 
-export default HeaderShop;
+export default React.memo(HeaderShop);

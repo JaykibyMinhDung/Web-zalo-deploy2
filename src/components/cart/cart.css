@@ -1,0 +1,42 @@
+.Cart {
+  position: relative;
+  bottom: 0;
+}
+.Cart header {
+  height: 1rem;
+  margin-bottom: 3vh;
+}
+.Cart header b {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Cart Header div {
+  /* width: 2rem; */
+  margin: 7px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.Cart Header div svg {
+  width: 1rem;
+}
+
+/* main */
+
+.Cart main div p {
+  font-weight: 760;
+}
+.Cart main div img {
+  width: 20%;
+}
+
+.main__cart {
+  display: flex;
+}
+
+/* .Cart Header svg {
+  width: 1
+} */
