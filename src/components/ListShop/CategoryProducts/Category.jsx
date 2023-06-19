@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import client from "../../../util/baseUrl";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { useMutation, useQuery, useQueryClient } from "react-query";
+import DefaultImage from "../../../images/default.jpg";
 
 import {
   receiveToken,
@@ -87,8 +88,12 @@ const Category = (props) => {
         <>
           <div className="background__images">
             <img
-              src={informationCategory.picture}
-              alt="error"
+              src={
+                informationCategory.picture
+                  ? informationCategory.picture
+                  : DefaultImage
+              }
+              alt=""
               width={"100%"}
               loading="lazy"
             />

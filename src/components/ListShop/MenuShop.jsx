@@ -31,23 +31,6 @@ const MenuShop = () => {
         }),
   });
 
-  // const getDataCategory = async () => {
-  //   client
-  //     .get("/api/loyalty-app/product-category?strSearch=&is_suggest=1", {
-  //       headers: {
-  //         Authorization: "Bearer " + token2,
-  //       },
-  //     })
-  //     .then((response) => {
-  //       return setProductCategory(response.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
-
-  // useEffect(() => {
-  //   getDataCategory();
-  // }, []);
-
   if (isLoading) {
     return <h2>Loadding...</h2>;
   }

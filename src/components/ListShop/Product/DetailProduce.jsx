@@ -1,15 +1,19 @@
 import React, { useState } from "react";
+import { useRecoilValue } from "recoil";
+
 import { ReactComponent as Chatzalo } from "../../../icon/chatText.svg";
+import { Slide } from "react-slideshow-image";
 // import { ReactComponent as ChevronLeft } from "../../../icon/left-chevron-svgrepo-com.svg";
 import { FaChevronLeft } from "react-icons/fa";
-
-import Option from "../../home/header/Option";
-import { Slide } from "react-slideshow-image";
-import "react-slideshow-image/dist/styles.css";
-import Popup from "../Modal/Modal";
-import "./detail.css";
 import { useNavigate } from "react-router-dom";
+import "react-slideshow-image/dist/styles.css";
+import "./detail.css";
+
+import { receiveKeyCategory } from "../../../store/token";
+import Option from "../../home/header/Option";
+import Popup from "../Modal/Modal";
 import CheckOut from "./CheckOut";
+import DefaultImage from "../../../images/default.jpg";
 
 const DetailProduct = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -24,17 +28,19 @@ const DetailProduct = () => {
     return setShowPopup(false);
   };
 
-  const slideImages = [
-    {
-      url: "https://newcdn.onshop.asia/images/narylee/bo-ni-bong-hinh-tho-cute-de-thuong.jpg",
-    },
-    {
-      url: "https://vn-live-03.slatic.net/p/7/ao-hoodie-tai-tho-sieu-cute-gianh-cho-be-1727-21104932-2a8274b96f9c87e88a90f93d11b4a7f7.jpg",
-    },
-    {
-      url: "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
-    },
-  ];
+  const keyWordCategory = useRecoilValue(receiveKeyCategory);
+
+  // const slideImages = [
+  //   {
+  //     url: "https://newcdn.onshop.asia/images/narylee/bo-ni-bong-hinh-tho-cute-de-thuong.jpg",
+  //   },
+  //   {
+  //     url: "https://vn-live-03.slatic.net/p/7/ao-hoodie-tai-tho-sieu-cute-gianh-cho-be-1727-21104932-2a8274b96f9c87e88a90f93d11b4a7f7.jpg",
+  //   },
+  //   {
+  //     url: "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
+  //   },
+  // ];
 
   const VND = new Intl.NumberFormat("vi-VN", {
     style: "currency",
@@ -62,7 +68,7 @@ const DetailProduct = () => {
         /> */}
         <>
           <div className="slideshow-container">
-            <Slide autoplay={false}>
+            {/* <Slide autoplay={false}>
               {slideImages.map((slideImage, index) => (
                 <div key={index} className="relative">
                   <img src={slideImage.url} alt="" />
@@ -71,7 +77,15 @@ const DetailProduct = () => {
                   </span>
                 </div>
               ))}
-            </Slide>
+            </Slide> */}
+            <img
+              src={
+                keyWordCategory.product_image
+                  ? keyWordCategory.product_image
+                  : DefaultImage
+              }
+              alt=""
+            />
           </div>
         </>
         <div style={{ paddingLeft: "1.2rem", paddingTop: "0.5rem" }}>

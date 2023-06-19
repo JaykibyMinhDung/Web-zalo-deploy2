@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -6,14 +6,24 @@ import reportWebVitals from "./reportWebVitals";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { RecoilRoot } from "recoil";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      suspense: true,
+      retry: 2,
+    },
+  },
+});
 
 const root = ReactDOM.createRoot(document.getElementById("app"));
 root.render(
   <QueryClientProvider client={queryClient}>
     <React.StrictMode>
       <RecoilRoot>
-        <App />
+        <Suspense fallback={<div>Đang tải</div>}>
+          <App />
+        </Suspense>
       </RecoilRoot>
     </React.StrictMode>
   </QueryClientProvider>
