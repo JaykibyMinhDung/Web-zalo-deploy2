@@ -19,7 +19,12 @@ export const receiveToken = atom(
 
 export const receiveKeyCategory = atom({
   key: "CategoryProducts",
-  default: "",
+  default: null,
+});
+
+export const autoRestartProduct = atom({
+  key: "autoRestartProduct",
+  default: () => {},
 });
 
 export const cart = atom({

@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { useQuery } from "react-query";
-import { useRecoilValue } from "recoil";
+import { useMutation, useQuery, queryClient } from "react-query";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import client from "../../util/baseUrl";
-import { receiveToken, receiveKeyCategory } from "../../store/token";
+import {
+  receiveToken,
+  receiveKeyCategory,
+  autoRestartProduct,
+} from "../../store/token";
 import "./products.css";
 
 const Products = (props) => {
-  const keyCategory = useRecoilValue(receiveKeyCategory);
-  const [valueTest, setValueTest] = useState(null);
+  const keyWordCategory = useRecoilValue(receiveKeyCategory);
+  // const setAutoForProducts = useSetRecoilState(autoRestartProduct); // Hàm này sẽ chạy mỗi lần click
+  // const [valueTest, setValueTest] = useState(null);
   const token2 = useRecoilValue(receiveToken);
   // Nhận giá trị của category
   const VND = new Intl.NumberFormat("vi-VN", {
@@ -17,64 +21,62 @@ const Products = (props) => {
     currency: "VND",
     currencyDisplay: "code",
   });
-  /*
-  2 lỗi sai trong reactQuery:
-  
-  - Không return về giá trị cần trả, hoặc lồng qus nhiều then trong đó
-  - Hàm không để là hàm bất đồng bộ
-  - Các thành phần bên trong để không bất đồng bộ
-  
-  */
 
-  function handleButton(event) {
-    return setValueTest(2584);
-  }
-  function handleButton1(event) {
-    return setValueTest(246);
-  }
-  function handleButton2(event) {
-    return setValueTest(252);
-  }
-  function handleButton3(event) {
-    return setValueTest(4749);
-  }
-
-  // hàm này chạy trước khi thằng number chạy, khi chạy lần 2 nó mới đổi
-  const { isLoading, error, data, isFetching } = useQuery({
-    queryKey: ["productsData"],
-    queryFn: () =>
-      client
-        .get(
-          `api/loyalty-app/sell/list-product?page=1&${
-            valueTest ? `search[category_id]=${valueTest}&` : ""
-          }pageLimit=50&filter_sort=price_asc`,
-          {
-            headers: {
-              Authorization: "Bearer " + token2,
-            },
-          }
-        )
-        .then((res) => res.data),
-  });
-
-  if (isLoading) return <div>loading...</div>; // dòng này cũng không hiện
-
-  console.log("Products", keyCategory, valueTest);
-
-  if (error) return "An error has occurred: " + error.message;
+  console.log(keyWordCategory);
 
   return (
     <div className="relative  top-44 bg-white">
       <div className="mx-auto  px-4 py-8 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className="sr-only">Products</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 xl:gap-x-8">
+          {keyWordCategory &&
+            keyWordCategory.data.map((e) => (
+              // height full
+              <Link
+                to="/detail"
+                className="group p-3 border h-full"
+                key={e.product_id}
+              >
+                {/* height h-full */}
+                <div className="relative aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 border">
+                  <div className="absolute top-0 left-0 text-white p-2 bg-orange-navbar rounded-ss rounded-ee-lg">
+                    -{e.price}
+                  </div>
 
-        <button onClick={handleButton}>2584</button>
-        <br />
-        <button onClick={handleButton1}>246</button>
-        <br />
-        <button onClick={handleButton2}>252</button>
-        <br />
-        <button onClick={handleButton3}>4749</button>
+                  <div>
+                    {/* height width h-64*/}
+                    <img
+                      src={e.product_image}
+                      alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
+                      className="h-56 w-full object-cover object-center group-hover:opacity-75"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+                <h3 className="products__title">{e.name}</h3>
+                <div className="flex justify-between items-center">
+                  <div>
+                    <p className="products__price">{VND.format(e.price)}</p>
+                  </div>
+                  <div className="mt-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="rgb(255, 102, 0)"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm7 14h-5v5h-4v-5h-5v-4h5v-5h4v5h5v4z" />
+                    </svg>
+                  </div>
+                </div>
+                <del style={{ fontSize: "small", color: "rgb(201, 201, 201)" }}>
+                  {VND.format(e.price)}
+                </del>
+              </Link>
+            ))}
+          {/*  More products...  */}
+        </div>
       </div>
     </div>
   );

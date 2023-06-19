@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import client from "./util/baseUrl";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
@@ -34,16 +34,20 @@ function App() {
         password: password,
       },
     });
-    setToken(res.data.data.token);
-    localStorage.setItem("expires_in", res.data.data.expires_in);
+    console.log("App");
     return res.data.data;
   };
   const { data, isLoading, error } = useQuery("tokenUser", fetchToken);
+
   if (isLoading) {
     return (
       <div style={{ textAlign: "center", fontSize: "150%" }}>Loadding...</div>
     );
   }
+  // setToken(res.data.data.token);
+  setToken(data.token);
+  // localStorage.setItem("expires_in", res.data.data.expires_in);
+  localStorage.setItem("expires_in", data.expires_in);
   // console.log(data);
 
   if (error) {
@@ -56,10 +60,7 @@ function App() {
         <Route path="*" element={<Notfound />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/cart" element={<Cart />} />
-        <Route
-          path="/list"
-          element={<ListShop lockpage={isLoading} token={data.token} />}
-        />
+        <Route path="/list" element={<ListShop lockpage={isLoading} />} />
         <Route path="/detail" element={<DetailProduct />} />
         <Route path="/checkout" element={<CheckOut />} />
       </Routes>

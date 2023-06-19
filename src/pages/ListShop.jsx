@@ -18,7 +18,7 @@ const ListShop = (props) => {
               <MenuShop />
             </div>
           </div>
-          <Products token={props.token} />
+          <Products />
         </>
       )}
     </React.Fragment>
