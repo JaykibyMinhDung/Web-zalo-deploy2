@@ -4,7 +4,7 @@ import "./loading.css";
 const Loading = () => {
   return (
     <>
-      <div class="loader loader1">
+      <div className="loader loader1">
         <div>
           <div>
             <div>
@@ -17,8 +17,13 @@ const Loading = () => {
           </div>
         </div>
       </div>
+    </>
+  );
+};
 
-      {/* <div class="loader loader2">
+export default Loading;
+
+/* <div class="loader loader2">
         <div>
           <div>
             <div>
@@ -66,9 +71,4 @@ const Loading = () => {
             </div>
           </div>
         </div>
-      </div> */}
-    </>
-  );
-};
-
-export default Loading;
+      </div> */

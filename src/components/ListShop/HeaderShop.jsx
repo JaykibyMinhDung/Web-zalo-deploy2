@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { useQuery } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 
 // svg
 import { ReactComponent as HomeIcon } from "../../icon/iconhome.svg";
 
 // Component
 import Option from "../home/header/Option";
-import { receiveKeyCategory } from "../../store/token";
+import {
+  receiveKeyCategory,
+  searchProductsRecoil,
+} from "../../store/recoil_store";
 import { SEARCH_PRODUCTS } from "../../constants/queryKeys";
 import { searchProducts } from "../../api/api";
 
@@ -16,26 +19,47 @@ import { searchProducts } from "../../api/api";
 import "./list.css";
 
 const HeaderShop = () => {
-  const keyCategory = useSetRecoilState(receiveKeyCategory);
-
+  // reactHook
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
 
+  // state, data
   const [searchProduct, setSearchProduct] = useState("");
+  const keyCategory = useSetRecoilState(receiveKeyCategory);
+  const SearchProducts = useSetRecoilState(searchProductsRecoil);
 
+  // request api
+  // const { isFetched, isLoading } = useQuery([SEARCH_PRODUCTS], () =>
+  //   searchProducts(searchProduct)
+  // );
+
+  const datafirst = useMutation({
+    mutationFn: (key) => searchProducts(key),
+    onSuccess: (data) => {
+      SearchProducts(data);
+      // keyWordCategory(data2.data);
+      queryClient.invalidateQueries({
+        queryKey: [SEARCH_PRODUCTS],
+      });
+    },
+    onError: (err) => {
+      console.log(err);
+    },
+  });
+
+  //function
   const inputSearch = (event) => {
-    console.log("Header");
+    // console.log("Header");
     setSearchProduct(event.target.value);
   };
-
-  const { data, isFetched, isLoading } = useQuery([SEARCH_PRODUCTS], () =>
-    searchProducts(searchProduct)
-  );
-
   const searchProductHandle = () => {
-    console.log(data);
+    // console.log(data);
+    datafirst.mutate(searchProduct);
+    setSearchProduct("");
   };
 
   const BackHome = () => {
+    searchProducts("");
     keyCategory("");
     navigate("/");
   };

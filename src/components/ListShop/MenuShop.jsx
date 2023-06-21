@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import client from "../../util/baseUrl";
 import { useQuery } from "react-query";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { receiveToken, firstProducts } from "../../store/token";
+import { receiveToken, firstProducts } from "../../store/recoil_store";
 
 // Import Swiper styles
 import "swiper/css";
@@ -13,7 +13,6 @@ import Category from "./CategoryProducts/Category";
 const MenuShop = () => {
   // const [productCategory, setProductCategory] = useState(); // get data
   const [checked, setChecked] = useState(null);
-
   const token2 = useRecoilValue(receiveToken);
   const setAddFirstCategoryProducts = useSetRecoilState(firstProducts);
 
@@ -28,6 +27,7 @@ const MenuShop = () => {
         })
         .then((res) => {
           console.log(".......................Menushop");
+          setChecked(res.data.data[0].id);
           setAddFirstCategoryProducts(res.data.data[0]);
           return res.data.data;
         }),
@@ -36,6 +36,7 @@ const MenuShop = () => {
   if (isLoading) {
     return <h2>Loadding...</h2>;
   }
+
   return (
     <Swiper
       className="bg-gray-100 distanceCards w-full h-full box-border"

@@ -74,11 +74,11 @@ const CheckOut = (props) => {
           <p>Số lượng</p>
           <div style={{ border: "1px solid #f67227" }}>
             <button onClick={minus}>
-              <i class="fa fa-minus" aria-hidden="true"></i>
+              <i className="fa fa-minus" aria-hidden="true"></i>
             </button>
             <span>{number}</span>
             <button onClick={plus}>
-              <i class="fa fa-plus" aria-hidden="true"></i>
+              <i className="fa fa-plus" aria-hidden="true"></i>
             </button>
           </div>
         </div>

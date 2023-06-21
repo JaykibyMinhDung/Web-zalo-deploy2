@@ -1,36 +1,42 @@
-import React, { Suspense, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useMutation, useQuery, queryClient } from "react-query";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
+// Component, data
 import {
   receiveToken,
   productDetail,
   receiveKeyCategory,
   firstProducts,
-} from "../../store/token";
+  resetLoading,
+  searchProductsRecoil,
+} from "../../store/recoil_store";
 import client from "../../util/baseUrl";
 import DefaultImage from "../../images/default.jpg";
-import "./products.css";
 import Loading from "../sninner_loading/Sninner";
+import { VND } from "../../util/convertMoney";
+
+// css
+import "./products.css";
 
 const Products = (props) => {
+  // reactHook
   const navigate = useNavigate();
+  const [firstDataCategory, setfirstDataCategory] = useState();
+  const [loadingProducts, setLoadingProducts] = useState(true);
+
+  //data, state
   const token2 = useRecoilValue(receiveToken);
   const keyWordCategory = useRecoilValue(receiveKeyCategory);
   const ProductCategoryFirst = useRecoilValue(firstProducts);
-  const [firstDataCategory, setfirstDataCategory] = useState();
-  const [loadingProducts, setLoadingProducts] = useState(true);
+  const ShowProductHasSearch = useRecoilValue(searchProductsRecoil);
+  // const resetLoad = useRecoilValue(resetLoading);
   const Detail = useSetRecoilState(productDetail);
 
-  const VND = new Intl.NumberFormat("vi-VN", {
-    style: "currency",
-    currency: "VND",
-    currencyDisplay: "code",
-  });
-
+  // request api
   const takeInformation = (variation_id, branch_id, unit_id) => {
-    // setLoadingProducts(false);
+    setLoadingProducts(false);
     Detail({
       variation_id,
       branch_id,
@@ -38,8 +44,6 @@ const Products = (props) => {
     });
     navigate("/detail");
   };
-
-  // console.log(ProductCategoryFirst);
 
   const firstViewProducts = useMutation({
     mutationFn: (add) =>
@@ -54,9 +58,8 @@ const Products = (props) => {
         }
       ),
     onSuccess: (data2) => {
-      console.log(data2);
-      setLoadingProducts(false);
       setfirstDataCategory(data2.data.data);
+      setLoadingProducts(false);
       // queryClient.invalidateQueries({
       //   queryKey: ["productsData"],
       // });
@@ -66,13 +69,16 @@ const Products = (props) => {
     },
   });
 
+  // functions
+
   useEffect(() => {
     if (!keyWordCategory && ProductCategoryFirst) {
       firstViewProducts.mutate(ProductCategoryFirst.id);
     }
   }, [keyWordCategory, ProductCategoryFirst]);
 
-  if (loadingProducts) {
+  if (!keyWordCategory && loadingProducts) {
+    // setLoadingProducts(false);
     return (
       <div style={{ position: "absolute", top: "35%", left: "30%" }}>
         <Loading />
@@ -80,106 +86,79 @@ const Products = (props) => {
     );
   }
 
+  const EmptyProduct = (
+    <div style={{ textAlign: "center" }}>
+      <h2>Not Product</h2>
+    </div>
+  );
+
+  const showProducts = () => {
+    if (ShowProductHasSearch) {
+      return ShowProductHasSearch.map((e) => componentGenrelly(e));
+    }
+    if (!keyWordCategory) {
+      return firstDataCategory.length > 1
+        ? firstDataCategory.map((e) => componentGenrelly(e))
+        : EmptyProduct;
+    }
+    if (keyWordCategory) {
+      return keyWordCategory.data.length > 1
+        ? keyWordCategory.data.map((e) => componentGenrelly(e))
+        : EmptyProduct;
+    }
+  };
+
+  const componentGenrelly = (e) => {
+    return (
+      <div
+        // to="/detail"
+        className="group p-3 border h-full"
+        key={e.product_id}
+        onClick={() => takeInformation(e.variation_id, e.branch_id, e.unit_id)}
+      >
+        <div className="relative aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 border">
+          <div className="absolute top-0 left-0 text-white p-2 bg-orange-navbar rounded-ss rounded-ee-lg">
+            -{e.price}
+          </div>
+
+          <div>
+            <img
+              src={e.product_image ? e.product_image : DefaultImage}
+              alt=""
+              className="h-56 w-full object-cover object-center group-hover:opacity-75"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <h3 className="products__title">{e.name}</h3>
+        <div className="flex justify-between items-center">
+          <div>
+            <p className="products__price">{VND.format(e.price)}</p>
+          </div>
+          <div className="mt-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="rgb(255, 102, 0)"
+              viewBox="0 0 24 24"
+            >
+              <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm7 14h-5v5h-4v-5h-5v-4h5v-5h4v5h5v4z" />
+            </svg>
+          </div>
+        </div>
+        <del style={{ fontSize: "small", color: "rgb(201, 201, 201)" }}>
+          {VND.format(e.price)}
+        </del>
+      </div>
+    );
+  };
   return (
     <div className="relative top-44 bg-white">
       <div className="mx-auto px-4 py-8 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className="sr-only">Products</h2>
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 xl:gap-x-8">
-          {!keyWordCategory
-            ? firstDataCategory.map((e) => (
-                <div
-                  // to="/detail"
-                  className="group p-3 border h-full"
-                  key={e.product_id}
-                  onClick={() =>
-                    takeInformation(e.variation_id, e.branch_id, e.unit_id)
-                  }
-                >
-                  <div className="relative aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 border">
-                    <div className="absolute top-0 left-0 text-white p-2 bg-orange-navbar rounded-ss rounded-ee-lg">
-                      -{e.price}
-                    </div>
-
-                    <div>
-                      <img
-                        src={e.product_image ? e.product_image : DefaultImage}
-                        alt=""
-                        className="h-56 w-full object-cover object-center group-hover:opacity-75"
-                        loading="lazy"
-                      />
-                    </div>
-                  </div>
-                  <h3 className="products__title">{e.name}</h3>
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <p className="products__price">{VND.format(e.price)}</p>
-                    </div>
-                    <div className="mt-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="rgb(255, 102, 0)"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm7 14h-5v5h-4v-5h-5v-4h5v-5h4v5h5v4z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <del
-                    style={{ fontSize: "small", color: "rgb(201, 201, 201)" }}
-                  >
-                    {VND.format(e.price)}
-                  </del>
-                </div>
-              ))
-            : keyWordCategory.data.map((e) => (
-                <div
-                  // to="/detail"
-                  className="group p-3 border h-full"
-                  key={e.product_id}
-                  onClick={() =>
-                    takeInformation(e.variation_id, e.branch_id, e.unit_id)
-                  }
-                >
-                  <div className="relative aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 border">
-                    <div className="absolute top-0 left-0 text-white p-2 bg-orange-navbar rounded-ss rounded-ee-lg">
-                      -{e.price}
-                    </div>
-
-                    <div>
-                      <img
-                        src={e.product_image ? e.product_image : DefaultImage}
-                        alt=""
-                        className="h-56 w-full object-cover object-center group-hover:opacity-75"
-                        loading="lazy"
-                      />
-                    </div>
-                  </div>
-                  <h3 className="products__title">{e.name}</h3>
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <p className="products__price">{VND.format(e.price)}</p>
-                    </div>
-                    <div className="mt-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="rgb(255, 102, 0)"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm7 14h-5v5h-4v-5h-5v-4h5v-5h4v5h5v4z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <del
-                    style={{ fontSize: "small", color: "rgb(201, 201, 201)" }}
-                  >
-                    {VND.format(e.price)}
-                  </del>
-                </div>
-              ))}
+          {showProducts()}
         </div>
       </div>
     </div>

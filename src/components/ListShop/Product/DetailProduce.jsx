@@ -1,25 +1,45 @@
 import React, { useState } from "react";
-import { useRecoilValue } from "recoil";
-
-import { ReactComponent as Chatzalo } from "../../../icon/chatText.svg";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { Slide } from "react-slideshow-image";
-import { getProductDetail } from "../../../api/api";
-import { FaChevronLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import "react-slideshow-image/dist/styles.css";
-import "./detail.css";
-import { productDetail } from "../../../store/token";
+import { useQuery } from "react-query";
+
+// component
+import {
+  productDetail,
+  resetLoading,
+  searchProductsRecoil,
+} from "../../../store/recoil_store";
 import { DETAIL_PRODUCT } from "../../../constants/queryKeys";
 import Option from "../../home/header/Option";
 import Popup from "../Modal/Modal";
 import CheckOut from "./CheckOut";
+import { VND } from "../../../util/convertMoney";
+
+// svg, image
+import { ReactComponent as Chatzalo } from "../../../icon/chatText.svg";
+import { getProductDetail } from "../../../api/api";
+import { FaChevronLeft } from "react-icons/fa";
 import DefaultImage from "../../../images/default.jpg";
-import { useQuery } from "react-query";
+
+//css
+import "react-slideshow-image/dist/styles.css";
+import "./detail.css";
 
 const DetailProduct = () => {
-  const [showPopup, setShowPopup] = useState(false);
+  //reactHook, defined
   const navigate = useNavigate();
+
+  // state
+  const [showPopup, setShowPopup] = useState(false);
+  const detailData = useRecoilValue(productDetail);
+  const resetLoad = useSetRecoilState(resetLoading);
+  const searchProduct = useSetRecoilState(searchProductsRecoil);
+
+  // function app
   const back = () => {
+    searchProduct("");
+    resetLoad(false);
     navigate("/list");
   };
   const showModal = () => {
@@ -31,8 +51,7 @@ const DetailProduct = () => {
     return setShowPopup(false);
   };
 
-  const detailData = useRecoilValue(productDetail);
-
+  // request api
   const { data, isFetched, isLoading } = useQuery([DETAIL_PRODUCT], () =>
     getProductDetail(
       detailData.variation_id,
@@ -49,25 +68,8 @@ const DetailProduct = () => {
     return <div> Loading... </div>;
   }
 
-  console.log(data);
-
-  // const slideImages = [
-  //   {
-  //     url: data.product_image ? data.product_image : DefaultImage,
-  //   },
-  //   {
-  //     url: "https://vn-live-03.slatic.net/p/7/ao-hoodie-tai-tho-sieu-cute-gianh-cho-be-1727-21104932-2a8274b96f9c87e88a90f93d11b4a7f7.jpg",
-  //   },
-  //   {
-  //     url: "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
-  //   },
-  // ];
-
-  const VND = new Intl.NumberFormat("vi-VN", {
-    style: "currency",
-    currency: "VND",
-    currencyDisplay: "code",
-  });
+  console.log(data.product_image.length);
+  // suar condition slideshow, loading
   return (
     <React.Fragment>
       <div onClick={back} className="positive-headers bg-orange-navbar">
@@ -90,7 +92,10 @@ const DetailProduct = () => {
               <Slide autoplay={false}>
                 {data.product_image.map((slideImage, index) => (
                   <div key={index} className="relative">
-                    <img src={slideImage.url} alt="" />
+                    <img
+                      src={slideImage.url ? slideImage.url : DefaultImage}
+                      alt=""
+                    />
                     <span className="totalImage">
                       {index + 1 + "/" + data.product_image.length}
                     </span>
@@ -99,11 +104,7 @@ const DetailProduct = () => {
               </Slide>
             </div>
           ) : (
-            <img
-              // src="https://newcdn.onshop.asia/images/narylee/bo-ni-bong-hinh-tho-cute-de-thuong.jpg"
-              src="https://vn-live-01.slatic.net/p/19fde56e1e4e8f3aed91108159da3828.jpg"
-              alt="lỗi"
-            />
+            <img src={data.product_image} alt="lỗi" />
           )}
         </>
         <div style={{ paddingLeft: "1.2rem", paddingTop: "0.5rem" }}>
@@ -232,3 +233,15 @@ const DetailProduct = () => {
 };
 
 export default DetailProduct;
+
+// const slideImages = [
+//   {
+//     url: data.product_image ? data.product_image : DefaultImage,
+//   },
+//   {
+//     url: "https://vn-live-03.slatic.net/p/7/ao-hoodie-tai-tho-sieu-cute-gianh-cho-be-1727-21104932-2a8274b96f9c87e88a90f93d11b4a7f7.jpg",
+//   },
+//   {
+//     url: "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
+//   },
+// ];

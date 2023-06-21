@@ -8,7 +8,7 @@ import Notfound from "./components/error/404";
 import DetailProduct from "./components/ListShop/Product/DetailProduce";
 import CheckOut from "./components/ListShop/Product/CheckOut";
 import { useQuery } from "react-query";
-import { receiveToken } from "./store/token";
+import { receiveToken } from "./store/recoil_store";
 import Cart from "./components/cart/Cart";
 import { GET_TOKEN } from "./constants/queryKeys";
 import { getToken } from "./api/api";

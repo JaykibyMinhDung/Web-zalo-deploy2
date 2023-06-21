@@ -1,45 +1,30 @@
 import React, { useState } from "react";
-import client from "../../../util/baseUrl";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import DefaultImage from "../../../images/default.jpg";
 
+// component
+import client from "../../../util/baseUrl";
 import {
   receiveToken,
   receiveKeyCategory,
   autoRestartProduct,
-} from "../../../store/token";
+} from "../../../store/recoil_store";
 
+// css
+import DefaultImage from "../../../images/default.jpg";
 import "../list.css";
 
 const Category = (props) => {
-  const { informationCategory, active, changeStatus } = props;
-  const token2 = useRecoilValue(receiveToken);
+  // reacthook
   const queryClient = useQueryClient();
-  // cài lại category
+
+  // state, data
+  const token2 = useRecoilValue(receiveToken);
+  const { informationCategory, active, changeStatus } = props;
   const keyWordCategory = useSetRecoilState(receiveKeyCategory);
-  // const setAutoProducts = useRecoilValue(autoRestartProduct); // Sau đó được chuyển về đây
 
   // console.log(active);
-
-  // hàm này chạy trước khi thằng number chạy, khi chạy lần 2 nó mới đổi
-  // const { isLoading, error, data, isFetching } = useQuery({
-  //   queryKey: ["productsData"],
-  //   queryFn: () =>
-  //     client
-  //       .get(
-  //         `api/loyalty-app/sell/list-product?page=1&&pageLimit=50&filter_sort=price_asc`,
-  //         {
-  //           headers: {
-  //             Authorization: "Bearer " + token2,
-  //           },
-  //         }
-  //       )
-  //       .then((res) => {
-  //         return res.data;
-  //       }),
-  // });
-
+  // request api
   const addMutation = useMutation({
     mutationFn: (add) =>
       client.get(
@@ -64,20 +49,15 @@ const Category = (props) => {
     },
   });
 
-  async function activeCategory() {
+  // function
+  async function activeCategoryHandle() {
     changeStatus(informationCategory.id);
-    // nhận id từ đây để chuyển sang products
-    // keyWordCategory(informationCategory.id);
-    addMutation.mutate(informationCategory.id); // Truyền id để reset lại trạng thái
+    addMutation.mutate(informationCategory.id);
   }
-
-  // if (isLoading) return <div>loading...</div>; // dòng này cũng không hiện
-
-  // if (error) return "An error has occurred: " + error.message;
 
   return (
     <div
-      onClick={activeCategory}
+      onClick={activeCategoryHandle}
       className={
         "adr-300:h-28 galaxyFold-280:h-5.5rem p-1 cards " +
         (active === informationCategory.id ? "list__categoria--active" : "")
@@ -106,3 +86,7 @@ const Category = (props) => {
 };
 
 export default Category;
+
+// if (isLoading) return <div>loading...</div>; // dòng này cũng không hiện
+
+// if (error) return "An error has occurred: " + error.message;
