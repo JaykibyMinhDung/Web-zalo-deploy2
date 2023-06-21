@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { RecoilRoot } from "recoil";
+import Loading from "./components/sninner_loading/Sninner";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -21,7 +22,7 @@ root.render(
   <QueryClientProvider client={queryClient}>
     <React.StrictMode>
       <RecoilRoot>
-        <Suspense fallback={<div>Đang tải</div>}>
+        <Suspense fallback={<Loading />}>
           <App />
         </Suspense>
       </RecoilRoot>

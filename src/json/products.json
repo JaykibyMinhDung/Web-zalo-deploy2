@@ -1,0 +1,43 @@
+{
+  "data": [
+    {
+      "branch_id": 11,
+      "product_id": 300,
+      "product_type": "variable",
+      "enable_stock": 1,
+      "product_image": "https://img.nextfarm.vn/nextcrm/hosco/1629857893618/def.jpeg",
+      "product_description": "",
+      "variation_id": 288,
+      "name": "Thẻ nhớ Sandisk 128G - Đen đỏ",
+      "unit_id": 230,
+      "f_convert": "1.0000",
+      "unit_name": "chiếc",
+      "price": "385000.0000",
+      "price_promotion": "385000.0000",
+      "is_suggest": 1,
+      "url": "https://preview.nextcrm.vn/product-detail/300"
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "total": 2,
+      "count": 2,
+      "per_page": 50,
+      "current_page": 1,
+      "total_pages": 1,
+      "links": []
+    },
+    "status_code": 0,
+    "message": "Successfully"
+  },
+  "recordsTotal": 2,
+  "recordsFiltered": 2,
+  "request": {
+    "search": {
+      "term": "128G"
+    },
+    "pageLimit": "50",
+    "filter_sort": "price_asc"
+  },
+  "sub_category": []
+}

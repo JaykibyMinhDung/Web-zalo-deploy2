@@ -23,11 +23,9 @@ const DetailProduct = () => {
     navigate("/list");
   };
   const showModal = () => {
-    document.body.style.overflow = "hidden";
     return setShowPopup(true);
   };
   const hiddenModal = () => {
-    document.body.style.overflow = "auto";
     return setShowPopup(false);
   };
 
@@ -41,27 +39,19 @@ const DetailProduct = () => {
     )
   );
 
-  if (!data && isFetched) {
-    return navigate("/list");
-  }
-
-  if (isLoading) {
-    return <div> Loading... </div>;
-  }
-
   console.log(data);
 
-  // const slideImages = [
-  //   {
-  //     url: data.product_image ? data.product_image : DefaultImage,
-  //   },
-  //   {
-  //     url: "https://vn-live-03.slatic.net/p/7/ao-hoodie-tai-tho-sieu-cute-gianh-cho-be-1727-21104932-2a8274b96f9c87e88a90f93d11b4a7f7.jpg",
-  //   },
-  //   {
-  //     url: "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
-  //   },
-  // ];
+  const slideImages = [
+    {
+      url: "https://newcdn.onshop.asia/images/narylee/bo-ni-bong-hinh-tho-cute-de-thuong.jpg",
+    },
+    {
+      url: "https://vn-live-03.slatic.net/p/7/ao-hoodie-tai-tho-sieu-cute-gianh-cho-be-1727-21104932-2a8274b96f9c87e88a90f93d11b4a7f7.jpg",
+    },
+    {
+      url: "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
+    },
+  ];
 
   const VND = new Intl.NumberFormat("vi-VN", {
     style: "currency",
@@ -83,32 +73,36 @@ const DetailProduct = () => {
         </div>
       </div>
       <div className="detail__backgroundimage">
+        {/* <img
+          src="https://newcdn.onshop.asia/images/narylee/bo-ni-bong-hinh-tho-cute-de-thuong.jpg"
+          alt="lỗi"
+        /> */}
         <>
-          {Array.isArray(data.product_image) &&
-          data.product_image.length > 1 ? (
-            <div className="slideshow-container">
-              <Slide autoplay={false}>
-                {data.product_image.map((slideImage, index) => (
-                  <div key={index} className="relative">
-                    <img src={slideImage.url} alt="" />
-                    <span className="totalImage">
-                      {index + 1 + "/" + data.product_image.length}
-                    </span>
-                  </div>
-                ))}
-              </Slide>
-            </div>
-          ) : (
-            <img
-              // src="https://newcdn.onshop.asia/images/narylee/bo-ni-bong-hinh-tho-cute-de-thuong.jpg"
-              src="https://vn-live-01.slatic.net/p/19fde56e1e4e8f3aed91108159da3828.jpg"
-              alt="lỗi"
-            />
-          )}
+          <div className="slideshow-container">
+            <Slide autoplay={false}>
+              {slideImages.map((slideImage, index) => (
+                <div key={index} className="relative">
+                  <img src={slideImage.url} alt="" />
+                  <span className="totalImage">
+                    {index + 1 + "/" + slideImages.length}
+                  </span>
+                </div>
+              ))}
+            </Slide>
+            {/* <img
+              src={
+                keyWordCategory.product_image
+                  ? keyWordCategory.product_image
+                  : DefaultImage
+              }
+              alt=""
+              
+            /> */}
+          </div>
         </>
         <div style={{ paddingLeft: "1.2rem", paddingTop: "0.5rem" }}>
-          <h2>{data.name}</h2>
-          <p className="price">{VND.format(data.price)}</p>
+          <h2>Bộ đồ mặc nhà cotton áo cộc quần sooc ST9043</h2>
+          <p className="price">{VND.format(6452200)}</p>
         </div>
       </div>
 
@@ -231,4 +225,4 @@ const DetailProduct = () => {
   );
 };
 
-export default DetailProduct;
+// export default DetailProduct;

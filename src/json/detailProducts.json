@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "status_code": 0,
+    "message": "Successfully"
+  },
+  "data": {
+    "product_id": 300,
+    "branch_id": 11,
+    "product_image": "https://img.nextfarm.vn/nextcrm/hosco/1629857893618/def.jpeg",
+    "product_description": "",
+    "name": "Thẻ nhớ Sandisk 128G",
+    "product_type": "variable",
+    "unit_id": 230,
+    "unit_name": "chiếc",
+    "variation_id": 288,
+    "enable_stock": 1,
+    "f_convert": "1.0000",
+    "price": 385000,
+    "price_promotion": 361900,
+    "url": "https://preview.nextcrm.vn/product-detail/300",
+    "variations": [
+      {
+        "variation_id": 288,
+        "name": "Đen đỏ",
+        "enable_stock": 1,
+        "f_convert": "1.0000",
+        "price": 385000,
+        "price_promotion": 377300,
+        "url": "https://preview.nextcrm.vn/product-detail/300"
+      },
+      {
+        "variation_id": 289,
+        "name": "Đen trắng",
+        "enable_stock": 1,
+        "f_convert": "1.0000",
+        "price": 395000,
+        "price_promotion": 383150,
+        "url": "https://preview.nextcrm.vn/product-detail/300"
+      }
+    ]
+  }
+}

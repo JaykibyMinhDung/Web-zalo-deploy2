@@ -1,76 +1,185 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { Suspense, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useMutation, useQuery, queryClient } from "react-query";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import client from "../../util/baseUrl";
+
 import {
   receiveToken,
+  productDetail,
   receiveKeyCategory,
-  autoRestartProduct,
+  firstProducts,
 } from "../../store/token";
+import client from "../../util/baseUrl";
 import DefaultImage from "../../images/default.jpg";
 import "./products.css";
+import Loading from "../sninner_loading/Sninner";
 
 const Products = (props) => {
+  const navigate = useNavigate();
+  const token2 = useRecoilValue(receiveToken);
   const keyWordCategory = useRecoilValue(receiveKeyCategory);
-  // const setAutoForProducts = useSetRecoilState(autoRestartProduct); // Hàm này sẽ chạy mỗi lần click
-  // Nhận giá trị của category
+  const ProductCategoryFirst = useRecoilValue(firstProducts);
+  const [firstDataCategory, setfirstDataCategory] = useState();
+  const [loadingProducts, setLoadingProducts] = useState(true);
+  const Detail = useSetRecoilState(productDetail);
+
   const VND = new Intl.NumberFormat("vi-VN", {
     style: "currency",
     currency: "VND",
     currencyDisplay: "code",
   });
 
-  console.log(keyWordCategory);
+  const takeInformation = (variation_id, branch_id, unit_id) => {
+    // setLoadingProducts(false);
+    Detail({
+      variation_id,
+      branch_id,
+      unit_id,
+    });
+    navigate("/detail");
+  };
+
+  // console.log(ProductCategoryFirst);
+
+  const firstViewProducts = useMutation({
+    mutationFn: (add) =>
+      client.get(
+        `api/loyalty-app/sell/list-product?page=1&${
+          add ? `search[category_id]=${add}&` : ""
+        }pageLimit=50&filter_sort=price_asc`,
+        {
+          headers: {
+            Authorization: "Bearer " + token2,
+          },
+        }
+      ),
+    onSuccess: (data2) => {
+      console.log(data2);
+      setLoadingProducts(false);
+      setfirstDataCategory(data2.data.data);
+      // queryClient.invalidateQueries({
+      //   queryKey: ["productsData"],
+      // });
+    },
+    onError: (err) => {
+      console.log(err);
+    },
+  });
+
+  useEffect(() => {
+    if (!keyWordCategory && ProductCategoryFirst) {
+      firstViewProducts.mutate(ProductCategoryFirst.id);
+    }
+  }, [keyWordCategory, ProductCategoryFirst]);
+
+  if (loadingProducts) {
+    return (
+      <div style={{ position: "absolute", top: "35%", left: "30%" }}>
+        <Loading />
+      </div>
+    );
+  }
 
   return (
-    <div className="relative  top-44 bg-white">
-      <div className="mx-auto  px-4 py-8 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+    <div className="relative top-44 bg-white">
+      <div className="mx-auto px-4 py-8 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className="sr-only">Products</h2>
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 xl:gap-x-8">
-          {keyWordCategory &&
-            keyWordCategory.data.map((e) => (
-              <Link
-                to="/detail"
-                className="group p-3 border h-full"
-                key={e.product_id}
-              >
-                <div className="relative aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 border">
-                  <div className="absolute top-0 left-0 text-white p-2 bg-orange-navbar rounded-ss rounded-ee-lg">
-                    -{e.price}
-                  </div>
+          {!keyWordCategory
+            ? firstDataCategory.map((e) => (
+                <div
+                  // to="/detail"
+                  className="group p-3 border h-full"
+                  key={e.product_id}
+                  onClick={() =>
+                    takeInformation(e.variation_id, e.branch_id, e.unit_id)
+                  }
+                >
+                  <div className="relative aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 border">
+                    <div className="absolute top-0 left-0 text-white p-2 bg-orange-navbar rounded-ss rounded-ee-lg">
+                      -{e.price}
+                    </div>
 
-                  <div>
-                    <img
-                      src={e.product_image ? e.product_image : DefaultImage}
-                      alt=""
-                      className="h-56 w-full object-cover object-center group-hover:opacity-75"
-                      loading="lazy"
-                    />
+                    <div>
+                      <img
+                        src={e.product_image ? e.product_image : DefaultImage}
+                        alt=""
+                        className="h-56 w-full object-cover object-center group-hover:opacity-75"
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
+                  <h3 className="products__title">{e.name}</h3>
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <p className="products__price">{VND.format(e.price)}</p>
+                    </div>
+                    <div className="mt-2">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="rgb(255, 102, 0)"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm7 14h-5v5h-4v-5h-5v-4h5v-5h4v5h5v4z" />
+                      </svg>
+                    </div>
+                  </div>
+                  <del
+                    style={{ fontSize: "small", color: "rgb(201, 201, 201)" }}
+                  >
+                    {VND.format(e.price)}
+                  </del>
                 </div>
-                <h3 className="products__title">{e.name}</h3>
-                <div className="flex justify-between items-center">
-                  <div>
-                    <p className="products__price">{VND.format(e.price)}</p>
+              ))
+            : keyWordCategory.data.map((e) => (
+                <div
+                  // to="/detail"
+                  className="group p-3 border h-full"
+                  key={e.product_id}
+                  onClick={() =>
+                    takeInformation(e.variation_id, e.branch_id, e.unit_id)
+                  }
+                >
+                  <div className="relative aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 border">
+                    <div className="absolute top-0 left-0 text-white p-2 bg-orange-navbar rounded-ss rounded-ee-lg">
+                      -{e.price}
+                    </div>
+
+                    <div>
+                      <img
+                        src={e.product_image ? e.product_image : DefaultImage}
+                        alt=""
+                        className="h-56 w-full object-cover object-center group-hover:opacity-75"
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
-                  <div className="mt-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="rgb(255, 102, 0)"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm7 14h-5v5h-4v-5h-5v-4h5v-5h4v5h5v4z" />
-                    </svg>
+                  <h3 className="products__title">{e.name}</h3>
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <p className="products__price">{VND.format(e.price)}</p>
+                    </div>
+                    <div className="mt-2">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="rgb(255, 102, 0)"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm7 14h-5v5h-4v-5h-5v-4h5v-5h4v5h5v4z" />
+                      </svg>
+                    </div>
                   </div>
+                  <del
+                    style={{ fontSize: "small", color: "rgb(201, 201, 201)" }}
+                  >
+                    {VND.format(e.price)}
+                  </del>
                 </div>
-                <del style={{ fontSize: "small", color: "rgb(201, 201, 201)" }}>
-                  {VND.format(e.price)}
-                </del>
-              </Link>
-            ))}
+              ))}
         </div>
       </div>
     </div>

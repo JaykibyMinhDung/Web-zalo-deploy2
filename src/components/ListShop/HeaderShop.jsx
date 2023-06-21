@@ -1,9 +1,16 @@
 import React, { useState } from "react";
-import { ReactComponent as HomeIcon } from "../../icon/iconhome.svg";
-import Option from "../home/header/Option";
 import { useNavigate } from "react-router-dom";
-import { receiveKeyCategory } from "../../store/token";
 import { useSetRecoilState } from "recoil";
+import { useQuery } from "react-query";
+
+// svg
+import { ReactComponent as HomeIcon } from "../../icon/iconhome.svg";
+
+// Component
+import Option from "../home/header/Option";
+import { receiveKeyCategory } from "../../store/token";
+import { SEARCH_PRODUCTS } from "../../constants/queryKeys";
+import { searchProducts } from "../../api/api";
 
 // import Style from "./list.css";
 import "./list.css";
@@ -13,11 +20,19 @@ const HeaderShop = () => {
 
   const navigate = useNavigate();
 
-  const [searchProduct, setSearchProduct] = useState();
+  const [searchProduct, setSearchProduct] = useState("");
+
   const inputSearch = (event) => {
     console.log("Header");
-
     setSearchProduct(event.target.value);
+  };
+
+  const { data, isFetched, isLoading } = useQuery([SEARCH_PRODUCTS], () =>
+    searchProducts(searchProduct)
+  );
+
+  const searchProductHandle = () => {
+    console.log(data);
   };
 
   const BackHome = () => {
@@ -47,6 +62,7 @@ const HeaderShop = () => {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
+              onClick={searchProductHandle}
               className="w-6 h-6"
             >
               <path
@@ -64,3 +80,28 @@ const HeaderShop = () => {
 };
 
 export default React.memo(HeaderShop);
+
+// const addMutation = useMutation({
+//   mutationFn: (add) =>
+//     client.get(
+//       `api/loyalty-app/sell/list-product?page=1&${
+//         add ? `search[category_id]=${add}&` : ""
+//       }pageLimit=50&filter_sort=price_asc`,
+//       {
+//         headers: {
+//           Authorization: "Bearer " + token2,
+//         },
+//       }
+//     ),
+//   onSuccess: (data2) => {
+//     console.log(data2);
+//     // console.log("Products");
+//     keyWordCategory(data2.data);
+//     queryClient.invalidateQueries({
+//       queryKey: ["productsData"],
+//     });
+//   },
+//   onError: (err) => {
+//     console.log(err);
+//   },
+// });

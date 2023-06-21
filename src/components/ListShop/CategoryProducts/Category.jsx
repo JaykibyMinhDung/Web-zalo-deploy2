@@ -20,6 +20,8 @@ const Category = (props) => {
   const keyWordCategory = useSetRecoilState(receiveKeyCategory);
   // const setAutoProducts = useRecoilValue(autoRestartProduct); // Sau đó được chuyển về đây
 
+  // console.log(active);
+
   // hàm này chạy trước khi thằng number chạy, khi chạy lần 2 nó mới đổi
   // const { isLoading, error, data, isFetching } = useQuery({
   //   queryKey: ["productsData"],
@@ -52,7 +54,6 @@ const Category = (props) => {
       ),
     onSuccess: (data2) => {
       console.log(data2);
-      // console.log("Products");
       keyWordCategory(data2.data);
       queryClient.invalidateQueries({
         queryKey: ["productsData"],
@@ -68,7 +69,6 @@ const Category = (props) => {
     // nhận id từ đây để chuyển sang products
     // keyWordCategory(informationCategory.id);
     addMutation.mutate(informationCategory.id); // Truyền id để reset lại trạng thái
-    console.log("Category");
   }
 
   // if (isLoading) return <div>loading...</div>; // dòng này cũng không hiện

@@ -6,27 +6,39 @@ import {
   useRecoilValue,
 } from "recoil";
 
-export const receiveToken = atom(
-  {
-    key: "tokenUser",
-    default: "",
-  }
-  // {
-  //   key: "expires_in",
-  //   default: ""
-  // }
-);
+// Thao tác với react recoil
 
+// token
+export const receiveToken = atom({
+  key: "tokenUser",
+  default: "",
+});
+
+// products
 export const receiveKeyCategory = atom({
   key: "CategoryProducts",
   default: null,
 });
 
-export const autoRestartProduct = atom({
-  key: "autoRestartProduct",
-  default: () => {},
+// function ( not use )
+export const firstProducts = atom({
+  key: "FirstProducts",
+  default: null,
 });
 
+// productDetail
+export const productDetail = atom({
+  key: "detail",
+  default: {
+    variation_id: "",
+    branch_id: "",
+    unit_id: "",
+  },
+});
+
+// default naỳ sẽ là một object, object sẽ
+
+// cart
 export const cart = atom({
   key: "shop",
   default: {

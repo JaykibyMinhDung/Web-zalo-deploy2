@@ -1,24 +1,23 @@
-import React from "react";
+import React, { Suspense } from "react";
 import "../components/ListShop/list.css";
 import HeaderShop from "../components/ListShop/HeaderShop";
 import Products from "../components/ListShop/Products";
 import MenuShop from "../components/ListShop/MenuShop";
+import Loading from "../components/sninner_loading/Sninner";
 
 const ListShop = () => {
-  // console.log(props);
-  console.log("listPage");
-
   return (
     <React.Fragment>
-      <>
-        <div className="relative">
-          <div className="list__headershop">
-            <HeaderShop />
-            <MenuShop />
-          </div>
+      {/* <Suspense fallback={<Loading />}> */}
+      <div className="relative">
+        <div className="list__headershop">
+          <HeaderShop />
+          <MenuShop />
         </div>
+      </div>
+      <Suspense fallback={<div>Loading...</div>}>
         <Products />
-      </>
+      </Suspense>
     </React.Fragment>
   );
 };

@@ -12,6 +12,7 @@ import { receiveToken } from "./store/token";
 import Cart from "./components/cart/Cart";
 import { GET_TOKEN } from "./constants/queryKeys";
 import { getToken } from "./api/api";
+import Loading from "./components/sninner_loading/Sninner";
 
 function App() {
   const [token, setToken] = useRecoilState(receiveToken);
@@ -25,7 +26,7 @@ function App() {
   }, [data, isFetched, setToken]);
 
   return !token ? (
-    <div>Đang lấy token</div>
+    <Loading />
   ) : (
     <BrowserRouter>
       <Routes>

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import client from "../../util/baseUrl";
 import { useQuery } from "react-query";
-import { useRecoilValue } from "recoil";
-import { receiveToken } from "../../store/token";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { receiveToken, firstProducts } from "../../store/token";
 
 // Import Swiper styles
 import "swiper/css";
@@ -15,6 +15,7 @@ const MenuShop = () => {
   const [checked, setChecked] = useState(null);
 
   const token2 = useRecoilValue(receiveToken);
+  const setAddFirstCategoryProducts = useSetRecoilState(firstProducts);
 
   const { isLoading, error, data, isFetching } = useQuery({
     queryKey: ["ProductsMenu"],
@@ -27,7 +28,8 @@ const MenuShop = () => {
         })
         .then((res) => {
           console.log(".......................Menushop");
-          return res.data;
+          setAddFirstCategoryProducts(res.data.data[0]);
+          return res.data.data;
         }),
   });
 
@@ -42,7 +44,7 @@ const MenuShop = () => {
       // onSlideChange={() => console.log("slide change")}
       // onSwiper={(swiper) => console.log(swiper)}
     >
-      {data.data.map((product) => (
+      {data.map((product) => (
         <SwiperSlide key={product.id}>
           <Category
             informationCategory={product}
