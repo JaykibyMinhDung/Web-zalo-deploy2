@@ -33,10 +33,92 @@
   width: 20%;
 }
 
-.main__cart {
+.main__cart > div {
   display: flex;
+  margin: 1rem;
+}
+
+.productImg {
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.productImg div {
+  margin-left: 1rem;
+}
+
+.priceCart div {
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.priceCart {
+  width: 80%;
+}
+
+/* .amountClothes2 {
+  width: 30%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  margin-left: 5px;
+} */
+
+.amountClothes2 button {
+  width: 39%;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  background-color: #ff6d192d !important;
+  border: 0px !important;
+  margin: 0%;
+}
+
+.amountClothes2 span {
+  padding-right: 0.3rem;
+  padding-left: 0.3rem;
+  margin: 0%;
+  text-align: center;
 }
 
 /* .Cart Header svg {
   width: 1
 } */
+
+/* Footer */
+
+.Cart footer {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.Cart footer div {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+.Cart footer button {
+  color: white;
+  text-align: center;
+  font-weight: 500;
+  width: 90%;
+  background-color: #f67227;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+@media (max-width: 360px) {
+  .amountClothes2 button {
+    width: 37%;
+  }
+}
+
+@media (max-width: 280px) {
+  .amountClothes2 button {
+    width: 35%;
+  }
+}

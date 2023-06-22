@@ -2,7 +2,12 @@
   position: absolute;
   bottom: 0;
   top: 0;
+  width: 90%;
   border-radius: 20px;
+}
+.checkout__modal div {
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
 }
 .checkout__modal img {
   width: 20%;

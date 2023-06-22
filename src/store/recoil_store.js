@@ -33,7 +33,7 @@ export const searchProductsRecoil = atom({
 // Reset Loading
 export const resetLoading = atom({
   key: "resetLoading",
-  default: false,
+  default: true,
 });
 
 // productDetail

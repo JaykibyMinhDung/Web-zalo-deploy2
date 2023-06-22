@@ -27,11 +27,14 @@ const MenuShop = () => {
         })
         .then((res) => {
           console.log(".......................Menushop");
-          setChecked(res.data.data[0].id);
           setAddFirstCategoryProducts(res.data.data[0]);
           return res.data.data;
         }),
   });
+
+  useEffect(() => {
+    setChecked(data[0].id);
+  }, [data]);
 
   if (isLoading) {
     return <h2>Loadding...</h2>;

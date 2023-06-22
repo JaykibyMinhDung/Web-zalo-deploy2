@@ -34,7 +34,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/list" element={<ListShop lockpage={isLoading} />} />
-        <Route path="/detail" element={<DetailProduct />} />
+        <Route path="/detail/:id" element={<DetailProduct />} />
         <Route path="/checkout" element={<CheckOut />} />
       </Routes>
     </BrowserRouter>

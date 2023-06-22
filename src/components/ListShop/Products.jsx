@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation, useQuery, queryClient } from "react-query";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 // Component, data
 import {
@@ -23,8 +23,8 @@ import "./products.css";
 const Products = (props) => {
   // reactHook
   const navigate = useNavigate();
-  const [firstDataCategory, setfirstDataCategory] = useState();
-  const [loadingProducts, setLoadingProducts] = useState(true);
+  const [firstDataCategory, setfirstDataCategory] = useState([]);
+  const [loadingProducts, setLoadingProducts] = useRecoilState(resetLoading);
 
   //data, state
   const token2 = useRecoilValue(receiveToken);
@@ -35,14 +35,21 @@ const Products = (props) => {
   const Detail = useSetRecoilState(productDetail);
 
   // request api
-  const takeInformation = (variation_id, branch_id, unit_id) => {
-    setLoadingProducts(false);
-    Detail({
-      variation_id,
-      branch_id,
-      unit_id,
+  const takeInformation = async (variation_id, branch_id, unit_id) => {
+    // setLoadingProducts(false);
+
+    // Viết dạng promise để sửa lỗi những chưa sửa được bug cứ mỗi làn reload lại nó sẽ không vào được detail lần đầu
+    let myPromise = new Promise(function (myResolve, myReject) {
+      myResolve(
+        Detail({
+          variation_id,
+          branch_id,
+          unit_id,
+        })
+      );
     });
-    navigate("/detail");
+    await myPromise;
+    return navigate(`/detail/${variation_id}`);
   };
 
   const firstViewProducts = useMutation({
@@ -78,7 +85,6 @@ const Products = (props) => {
   }, [keyWordCategory, ProductCategoryFirst]);
 
   if (!keyWordCategory && loadingProducts) {
-    // setLoadingProducts(false);
     return (
       <div style={{ position: "absolute", top: "35%", left: "30%" }}>
         <Loading />
@@ -87,8 +93,8 @@ const Products = (props) => {
   }
 
   const EmptyProduct = (
-    <div style={{ textAlign: "center" }}>
-      <h2>Not Product</h2>
+    <div style={{ textAlign: "right" }}>
+      <h2>No Product 😥</h2>
     </div>
   );
 

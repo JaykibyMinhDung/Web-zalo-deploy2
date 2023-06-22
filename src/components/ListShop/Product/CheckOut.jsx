@@ -1,17 +1,26 @@
 import React, { useState } from "react";
 
+import { VND } from "../../../util/convertMoney";
+
 import "./checkout.css";
+import { useQuery } from "react-query";
 
 const CheckOut = (props) => {
+  // state
   const [number, setNumber] = useState(0);
-  const [onClickStyle, setonClickStyle] = useState(false);
-  const chooseStye = () => {
-    if (onClickStyle) {
-      setonClickStyle(false);
-    }
-    if (!onClickStyle) {
-      setonClickStyle(true);
-    }
+  const [onClickStyle, setonClickStyle] = useState(null);
+  const { ProductWillBuy, onClose, functionCheckOut } = props;
+  const chooseStye = (nameType) => {
+    setonClickStyle(nameType);
+  };
+
+  // request api
+
+  // const {data, isLoading} = useQuery([], )
+
+  // function
+  const BuyCart = () => {
+    console.log(functionCheckOut);
   };
   const plus = () => {
     setNumber(number + 1);
@@ -22,54 +31,67 @@ const CheckOut = (props) => {
     }
   };
 
-  const VND = new Intl.NumberFormat("vi-VN", {
-    style: "currency",
-    currency: "VND",
-    currencyDisplay: "code",
-  });
   return (
     <div className="checkout__modal">
       <header>
         <img
-          src="https://newcdn.onshop.asia/images/narylee/bo-ni-bong-hinh-tho-cute-de-thuong.jpg"
+          src={ProductWillBuy.product_image}
           alt=""
           className="object-cover object-center"
         />
         <div>
-          <p>Bộ đồ mặc nhà cotton áo cộc tay quần sooc ST9043</p>
-          <p style={{ color: "#f67227" }}>{VND.format(439000)}</p>
+          <p>{ProductWillBuy.name}</p>
+          <p style={{ color: "#f67227" }}>{VND.format(ProductWillBuy.price)}</p>
+          <del style={{ color: "#808080" }}>
+            {VND.format(ProductWillBuy.price_promotion)}
+          </del>
         </div>
-        <button onClick={props.onClose}>X</button>
+        <button onClick={onClose}>X</button>
       </header>
       <hr />
       <main>
-        <p>Chọn màu sắc (4 màu sắc)</p>
+        <p>Chọn màu sắc ({ProductWillBuy.variations.length} màu sắc)</p>
         <div className="colorClothes">
-          <button
-            onClick={chooseStye}
-            className={onClickStyle ? "checkout__modal--Active" : ""}
-          >
-            Tím nhạt
-          </button>
-          <button>Hồng nấu</button>
+          {ProductWillBuy.variations &&
+            ProductWillBuy.variations.map((e, index) => (
+              <button
+                onClick={() => chooseStye(e.name)}
+                className={
+                  onClickStyle === e.name ? "checkout__modal--Active" : ""
+                }
+                key={ProductWillBuy.product_id}
+              >
+                {e.name}
+              </button>
+            ))}
+          {/* <button>Hồng nấu</button>
           <button>Xanh két</button>
-          <button>Biển đậm</button>
+          <button>Biển đậm</button> */}
         </div>
-        <p>Chọn kích thước (4 kích thước)</p>
+        <p>Chọn kích thước ({ProductWillBuy.size?.length} kích thước)</p>
         <div className="sizeClothes">
-          <button>S</button>
-          <button>M</button>
+          {ProductWillBuy.size &&
+            ProductWillBuy.size.map((e, index) => (
+              <button
+                onClick={chooseStye}
+                className={onClickStyle ? "checkout__modal--Active" : ""}
+                key={index}
+              >
+                {e.size}
+              </button>
+            ))}
+          {/* <button>M</button>
           <button>L</button>
-          <button>XL</button>
+          <button>XL</button> */}
         </div>
-        <p>Chọn chất liệu(1 chất liệu)</p>
+        {/* <p>Chọn chất liệu(1 chất liệu)</p>
         <div>
           <button>Cotton</button>
         </div>
         <p>Chọn kiểu dáng (1 kiểu dáng)</p>
         <div>
           <button>Áo cộc-quần sooc</button>
-        </div>
+        </div> */}
         <div className="amountClothes">
           <p>Số lượng</p>
           <div style={{ border: "1px solid #f67227" }}>
@@ -84,7 +106,7 @@ const CheckOut = (props) => {
         </div>
       </main>
       <footer>
-        <button>Xác nhận</button>
+        <button onClick={BuyCart}>Xác nhận</button>
       </footer>
     </div>
   );

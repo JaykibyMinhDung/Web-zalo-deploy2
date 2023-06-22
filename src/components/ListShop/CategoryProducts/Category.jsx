@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 
 // component
@@ -7,7 +7,8 @@ import client from "../../../util/baseUrl";
 import {
   receiveToken,
   receiveKeyCategory,
-  autoRestartProduct,
+  resetLoading,
+  searchProductsRecoil,
 } from "../../../store/recoil_store";
 
 // css
@@ -22,6 +23,8 @@ const Category = (props) => {
   const token2 = useRecoilValue(receiveToken);
   const { informationCategory, active, changeStatus } = props;
   const keyWordCategory = useSetRecoilState(receiveKeyCategory);
+  const resetProductSearch = useSetRecoilState(searchProductsRecoil);
+  const [loadingProducts, resetLoadingCategory] = useRecoilState(resetLoading);
 
   // console.log(active);
   // request api
@@ -51,8 +54,15 @@ const Category = (props) => {
 
   // function
   async function activeCategoryHandle() {
+    // if (!loadingProducts) {
+    resetProductSearch(null);
+    keyWordCategory(null);
+    // }
+    resetLoadingCategory(true);
     changeStatus(informationCategory.id);
+    // if (active === informationCategory.id) {
     addMutation.mutate(informationCategory.id);
+    // }
   }
 
   return (

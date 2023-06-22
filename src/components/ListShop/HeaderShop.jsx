@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { useMutation, useQuery, useQueryClient } from "react-query";
@@ -11,6 +11,7 @@ import Option from "../home/header/Option";
 import {
   receiveKeyCategory,
   searchProductsRecoil,
+  firstProducts,
 } from "../../store/recoil_store";
 import { SEARCH_PRODUCTS } from "../../constants/queryKeys";
 import { searchProducts } from "../../api/api";
@@ -26,13 +27,10 @@ const HeaderShop = () => {
   // state, data
   const [searchProduct, setSearchProduct] = useState("");
   const keyCategory = useSetRecoilState(receiveKeyCategory);
+  // const ProductCategoryFirst = useRecoilValue(firstProducts);
   const SearchProducts = useSetRecoilState(searchProductsRecoil);
 
   // request api
-  // const { isFetched, isLoading } = useQuery([SEARCH_PRODUCTS], () =>
-  //   searchProducts(searchProduct)
-  // );
-
   const datafirst = useMutation({
     mutationFn: (key) => searchProducts(key),
     onSuccess: (data) => {
@@ -53,16 +51,16 @@ const HeaderShop = () => {
     setSearchProduct(event.target.value);
   };
   const searchProductHandle = () => {
-    // console.log(data);
     datafirst.mutate(searchProduct);
     setSearchProduct("");
   };
 
   const BackHome = () => {
-    searchProducts("");
     keyCategory("");
+    SearchProducts("");
     navigate("/");
   };
+
   return (
     <React.Fragment>
       <div className="relative p-3 flex items-center gap-4 justify-around bg-orange-navbar textPlaceholde">

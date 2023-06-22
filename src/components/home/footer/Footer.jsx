@@ -10,8 +10,6 @@ import { ReactComponent as ChatText } from "../../../icon/chatText.svg";
 import { ReactComponent as User } from "../../../icon/user.svg";
 
 //component
-import Cart from "../../cart/Cart";
-import Popup from "../../ListShop/Modal/Modal";
 
 // css
 import "./footer.css";
@@ -39,7 +37,6 @@ function classNames(...classes) {
 }
 
 const Footer = () => {
-  const [showPopup, setShowPopup] = useState(false);
   return (
     <Disclosure as="nav" className="fixed bottom-0 drop-shadow-4xl bg-slate-50">
       <>
@@ -65,12 +62,11 @@ const Footer = () => {
                 </NavLink>
               </div>
             ))}
-            {/* Drop box  */}
-            {showPopup && (
+            {/* {showPopup && (
               <Popup>
                 <Cart />
               </Popup>
-            )}
+            )} */}
           </div>
         </div>
       </>
