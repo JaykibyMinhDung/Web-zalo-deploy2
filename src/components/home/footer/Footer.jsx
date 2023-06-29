@@ -6,9 +6,9 @@ import { NavLink } from "react-router-dom";
 import { ReactComponent as PageHome } from "../../../icon/iconhome.svg";
 import { ReactComponent as ListIcon } from "../../../icon/iconlist.svg";
 import { ReactComponent as CartIcon } from "../../../icon/cartIcon.svg";
-import { ReactComponent as ChatText } from "../../../icon/chatText.svg";
+// import { ReactComponent as ChatText } from "../../../icon/chatText.svg";
 import { ReactComponent as User } from "../../../icon/user.svg";
-
+import { FaRegBell } from "react-icons/fa";
 //component
 
 // css
@@ -24,23 +24,23 @@ const navigation = [
     icon: <ListIcon />,
   },
   { name: "Giỏ hàng", href: "/cart", current: false, icon: <CartIcon /> },
-  { name: "Tin nhắn", href: "/message", current: false, icon: <ChatText /> },
+  {
+    name: "Thông báo",
+    href: "/notification",
+    current: false,
+    icon: <FaRegBell className="h-6" />,
+  },
   { name: "Cá nhân", href: "/personal", current: false, icon: <User /> },
 ];
 
-function classNames(...classes) {
-  // item.current
-  //   ? "bg-slate-50 text-amber-500 "
-  //   : " text-black hover:bg-slate-50 hover:text-amber-500",
-
-  return classes.filter(Boolean).join(" ");
-}
-
 const Footer = () => {
   return (
-    <Disclosure as="nav" className="fixed bottom-0 drop-shadow-4xl bg-slate-50">
+    <Disclosure
+      as="nav"
+      className="fixed bottom-0 drop-shadow-4xl bg-slate-50 w-full"
+    >
       <>
-        <div className="mx-auto w-screen h-auto px-2 sm:px-6 lg:px-8 font-sans">
+        <div className=" mx-auto w-screen h-auto px-2 sm:px-6 lg:px-8 font-sans">
           <div className="relative mx-px flex items-center justify-between">
             {/* item.map */}
             {navigation.map((item) => (
@@ -48,7 +48,6 @@ const Footer = () => {
                 <NavLink
                   key={item.name}
                   to={item.href}
-                  // flex-col
                   style={({ isActive, isPending }) => {
                     return {
                       color: isActive ? "#f67227" : "black",
@@ -57,7 +56,6 @@ const Footer = () => {
                   aria-current={item.current ? "page" : undefined}
                 >
                   {item.icon}
-                  {/* <p className="svg ml-3.5">{item.icon}</p> */}
                   {item.name}
                 </NavLink>
               </div>

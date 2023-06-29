@@ -38,6 +38,55 @@ export const getToken = async () => {
   return data.data;
 };
 
+export const getBrand = async () => {
+  const token = await getToken();
+  const { data } = await client({
+    method: "GET",
+    url: "api/loyalty-app/brands?page=1&pageLimit=5&strSearch=",
+    headers: {
+      Authorization: "Bearer " + token.token,
+    },
+  });
+  return data.data;
+};
+
+export const getNotification = async () => {
+  const token2 =
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvXC9hcGlcL2d5bS1sb3lhbHR5XC9sb2dpbiIsImlhdCI6MTY4NTMzMzEwMiwiZXhwIjoxNzE2NDM3MTAwLCJuYmYiOjE2ODUzMzMxMDIsImp0aSI6IndtYlVLQ3RWWUNwNndCUXciLCJzdWIiOjQ3NjEsInBydiI6Ijk0ZGJkOTYxYWFlZjBlM2NlNjZhZDdkNTBlNjQ3NzE3NjA5ZGRhMjQiLCJhcHBfdHlwZSI6Imd5bSIsInVzZXJfdHlwZSI6ImxveWFsdHlfdXNlciIsIm1lbWJlcl9pZCI6MTAzNzgwNX0.sixkNfaeatzRDGX08a8H1faTKxWxtfisCbeWZpAjk2I";
+  const { data } = await client({
+    method: "GET",
+    url: "api/loyalty-app/notifications",
+    headers: {
+      Authorization: "Bearer " + token2,
+    },
+  });
+  return data.data;
+};
+
+export const getNewsPaper = async () => {
+  const token = await getToken();
+  const { data } = await client({
+    method: "GET",
+    url: "api/loyalty-app/post?page=1&pageLimit=50&type=is_hot",
+    headers: {
+      Authorization: "Bearer " + token.token,
+    },
+  });
+  return data.data;
+};
+
+export const getBanner = async () => {
+  const test = await getToken();
+  const { data } = await client({
+    method: "GET",
+    url: "api/loyalty-app/banner?page=1&pageLimit=50",
+    headers: {
+      Authorization: "Bearer " + test.token,
+    },
+  });
+  return data.data;
+};
+
 export const searchProducts = async (NameProducts) => {
   const test = await getToken();
   const { data } = await client({

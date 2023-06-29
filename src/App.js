@@ -13,6 +13,10 @@ import Cart from "./components/cart/Cart";
 import { GET_TOKEN } from "./constants/queryKeys";
 import { getToken } from "./api/api";
 import Loading from "./components/sninner_loading/Sninner";
+import Card from "./styles/card/Card.jsx";
+import News from "./components/news/News";
+import Brand from "./components/brand/Brand";
+import Notification from "./components/notifications/Notifications";
 
 function App() {
   const [token, setToken] = useRecoilState(receiveToken);
@@ -33,9 +37,13 @@ function App() {
         <Route path="*" element={<Notfound />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/brand" element={<Brand />} />
+        <Route path="/notification" element={<Notification />} />
         <Route path="/list" element={<ListShop lockpage={isLoading} />} />
         <Route path="/detail/:id" element={<DetailProduct />} />
         <Route path="/checkout" element={<CheckOut />} />
+        <Route path="/style" element={<Card />} />
       </Routes>
     </BrowserRouter>
   );

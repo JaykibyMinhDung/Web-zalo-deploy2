@@ -2,7 +2,7 @@
   background-color: rgb(255, 102, 0);
   position: absolute;
   /* left: calc(100% - 55rem); */
-  top: -28%;
+  top: -55%;
   right: auto;
   width: 140vw;
   height: 110vw;
@@ -15,7 +15,7 @@
   justify-content: center;
   overflow: hidden;
   width: 100vw;
-  height: 100vh;
+  height: 50vh;
 }
 
 .border--header__justify {
@@ -32,7 +32,7 @@
   /* background-color: rgba(109, 109, 109, 0.452); */
 }
 
-@media (min-width: 768px) and (max-width: 1280px) {
+/* @media (min-width: 768px) and (max-width: 1280px) {
   .background--header {
     border-bottom-left-radius: 10rem;
     border-bottom-right-radius: 10rem;
@@ -46,13 +46,50 @@
     height: 100vh;
   }
   .background--header {
-    /* background-color: rgb(255, 102, 0); */
     background-color: #fd7f35;
     position: absolute;
-    /* left: calc(100% - 55rem); */
     top: -50%;
     width: 120vw;
     height: 120vw;
     border-radius: 50%;
+  }
+} */
+@media (max-width: 420px) {
+  .background--header {
+    top: -55%;
+    width: 140vw;
+    height: 115vw;
+  }
+
+  .container--header {
+    width: 100vw;
+    height: 45vh;
+  }
+}
+@media (max-width: 320px) {
+  .background--header {
+    top: -30%;
+    width: 140vw;
+    height: 108vw;
+    overflow-x: hidden;
+  }
+
+  .container--header {
+    width: 106vw;
+    height: 45vh;
+  }
+}
+@media (max-width: 390px) {
+  .background--header {
+    top: -40%;
+    width: 130vw;
+    height: 90vw;
+    overflow-x: hidden;
+  }
+
+  .container--header {
+    width: 100vw;
+    height: 45vh;
+    margin-bottom: 0.5rem;
   }
 }

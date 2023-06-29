@@ -1,4 +1,8 @@
 export const GET_TOKEN = "tokenUser";
+export const GET_BANNER = "banner";
+export const GET_PAPER = "news";
+export const GET_BRAND = "brand";
+export const GET_NOTIFICATION = "notice";
 export const SEARCH_PRODUCTS = "searchProducts";
 export const DETAIL_PRODUCT = "productDetail";
 export const ADD_PRODUCT = "addCartProduct";
