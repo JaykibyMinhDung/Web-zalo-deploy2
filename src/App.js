@@ -28,7 +28,7 @@ function App() {
   return !token ? (
     <Loading />
   ) : (
-    <BrowserRouter>
+    <BrowserRouter baseURL="/zapps/[ZALO_MINI_APP_ID]">
       <Routes>
         <Route path="*" element={<Notfound />} />
         <Route path="/" element={<HomePage />} />

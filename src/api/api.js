@@ -28,7 +28,7 @@ const password = "35F33ECAB48CF3672EE70D92AE6E5957";
 export const getToken = async () => {
   const { data } = await client({
     method: "GET",
-    url: "https://api-nextcrm.nextcrm.vn/api/auth/token",
+    url: "api/auth/token",
     auth: {
       username: username,
       password: password,
@@ -42,7 +42,7 @@ export const searchProducts = async (NameProducts) => {
   const test = await getToken();
   const { data } = await client({
     method: "GET",
-    url: `https://api-nextcrm.nextcrm.vn/api/loyalty-app/sell/list-product?search[term]=${NameProducts}&pageLimit=50&filter_sort=price_asc`,
+    url: `api/loyalty-app/sell/list-product?search[term]=${NameProducts}&pageLimit=50&filter_sort=price_asc`,
     headers: {
       Authorization: "Bearer " + test.token,
     },
@@ -54,7 +54,7 @@ export const getProductDetail = async (variation, unit, branch) => {
   const test = await getToken();
   const { data } = await client({
     method: "GET",
-    url: `https://api-nextcrm.nextcrm.vn/api/loyalty-app/sell/product-view?variation_id=${variation}&unit_id=${unit}&branch_id=${branch}`,
+    url: `api/loyalty-app/sell/product-view?variation_id=${variation}&unit_id=${unit}&branch_id=${branch}`,
     headers: {
       Authorization: "Bearer " + test.token,
     },

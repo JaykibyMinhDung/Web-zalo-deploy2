@@ -1,5 +1,6 @@
 import React from "react";
 import "./loading.css";
+import logoNextX from "../../images/nextXlogo.png";
 
 const Loading = () => {
   return (
@@ -23,6 +24,7 @@ const Loading = () => {
         <div></div>
         <div></div>
       </div>
+      <img className="loading__img--logo" src={logoNextX} alt="" />
     </>
   );
 };

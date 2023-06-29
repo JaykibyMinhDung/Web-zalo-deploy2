@@ -1,0 +1,78 @@
+.test__row--flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.test__margin {
+  margin-bottom: 2rem;
+}
+.test__image {
+  position: relative;
+  width: 35vw;
+  height: 45vw;
+  background-color: rgb(219, 219, 219);
+  overflow: hidden;
+  border-radius: 10px;
+}
+.test__paragaph {
+  position: relative;
+  width: 33vw;
+  height: 5vw;
+  margin-top: 1rem;
+  background-color: rgb(219, 219, 219);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.test__paragaph2 {
+  position: relative;
+  width: 35vw;
+  height: 5vw;
+  margin-top: 1rem;
+  background-color: rgb(219, 219, 219);
+  overflow: hidden;
+}
+.test__barLoad {
+  position: absolute;
+  /* transform: rotate(313deg); */
+  transform: rotate(-45deg);
+  animation: moveLoad ease 1s infinite;
+  /* width: 10vh; */
+  height: 5vh;
+}
+.test__barLoad--paragaph {
+  position: absolute;
+  transform: rotate(-50deg);
+  animation: moveLoad--paragaph ease 1s infinite;
+  /* width: 10vh; */
+  height: 3vh;
+}
+
+@keyframes moveLoad {
+  0% {
+    top: 0%;
+    left: -80%;
+    background: rgba(255, 255, 255, 0.281);
+    width: 400px;
+  }
+  100% {
+    top: 100%;
+    left: 50%;
+    background: rgba(255, 255, 255, 0.589);
+    width: 300px;
+  }
+}
+@keyframes moveLoad--paragaph {
+  0% {
+    /* top: 0%; */
+    left: -50%;
+    background: rgba(255, 255, 255, 0.281);
+    width: 100px;
+  }
+  100% {
+    /* top: 100%; */
+    left: 100%;
+    background: rgba(255, 255, 255, 0.589);
+    width: 100px;
+  }
+}

@@ -41,7 +41,7 @@ const Category = (props) => {
         }
       ),
     onSuccess: (data2) => {
-      console.log(data2);
+      // console.log(data2);
       keyWordCategory(data2.data);
       queryClient.invalidateQueries({
         queryKey: ["productsData"],

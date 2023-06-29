@@ -21,19 +21,19 @@ const HeaderMenu = () => {
             <span className="inline-flex items-center rounded-full bg-red-50 px-2 py-2 text-xs font-medium text-orange-navbar ring-1 ring-inset ring-red-600/10">
               <StartIcon className="w-7 sm:w-14" />
             </span>
-            <p className="w-18 sm:w-20">Tích điểm</p>
+            <p className="w-18 sm:w-20">Thương hiệu</p>
           </div>
           <div>
             <span className="inline-flex items-center rounded-full bg-red-50 px-2 py-2 text-xs font-medium text-orange-navbar ring-1 ring-inset ring-red-600/10">
               <GiftIcon className="w-7 sm:w-14" />
             </span>
-            <p className="w-18 sm:w-20">Đổi thưởng</p>
+            <p className="w-18 sm:w-20">Bài viết</p>
           </div>
           <div>
             <span className="inline-flex items-center rounded-full bg-red-50 px-2 py-2 text-xs font-medium text-orange-navbar ring-1 ring-inset ring-red-600/10">
               <CartIcon className="w-7 sm:w-14" />
             </span>
-            <p className="w-18 sm:w-20">Đặt hàng</p>
+            <p className="w-18 sm:w-20">Tin tức</p>
           </div>
           <div>
             <span className="inline-flex items-center rounded-full bg-red-50 px-2 py-2 text-xs font-medium text-orange-navbar ring-1 ring-inset ring-red-600/10">

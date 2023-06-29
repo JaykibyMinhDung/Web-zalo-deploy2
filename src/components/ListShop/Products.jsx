@@ -14,8 +14,10 @@ import {
 } from "../../store/recoil_store";
 import client from "../../util/baseUrl";
 import DefaultImage from "../../images/default.jpg";
-import Loading from "../sninner_loading/Sninner";
+// import Loading from "../sninner_loading/Sninner";
 import { VND } from "../../util/convertMoney";
+import NotfoundPage from "../../images/product_not_found2.png";
+import ImageWhite from "../sninner_loading/loadingImage/ImageWhite";
 
 // css
 import "./products.css";
@@ -77,24 +79,26 @@ const Products = (props) => {
   });
 
   // functions
-
   useEffect(() => {
     if (!keyWordCategory && ProductCategoryFirst) {
       firstViewProducts.mutate(ProductCategoryFirst.id);
     }
   }, [keyWordCategory, ProductCategoryFirst]);
 
+  // loading and lazy load
   if (!keyWordCategory && loadingProducts) {
     return (
-      <div style={{ position: "absolute", top: "35%", left: "30%" }}>
-        <Loading />
+      // <div style={{ position: "absolute", top: "35%", left: "30%" }}>
+      <div style={{ position: "absolute", top: "30%" }}>
+        {/* <Loading /> */}
+        <ImageWhite />
       </div>
     );
   }
 
   const EmptyProduct = (
-    <div style={{ textAlign: "right" }}>
-      <h2>No Product 😥</h2>
+    <div>
+      <img src={NotfoundPage} alt="" />
     </div>
   );
 
@@ -163,7 +167,16 @@ const Products = (props) => {
     <div className="relative top-44 bg-white">
       <div className="mx-auto px-4 py-8 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className="sr-only">Products</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 xl:gap-x-8">
+        <div
+          className={
+            (firstDataCategory.length > 1 && keyWordCategory === null) ||
+            (firstDataCategory.length > 1 &&
+              keyWordCategory &&
+              keyWordCategory.data.length < 1)
+              ? "text-center"
+              : "grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 xl:gap-x-8"
+          }
+        >
           {showProducts()}
         </div>
       </div>

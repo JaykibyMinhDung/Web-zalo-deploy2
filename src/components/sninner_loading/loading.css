@@ -119,21 +119,27 @@ div:hover {
 }
 
 /* spinner basic 2 */
-
+.loading__img--logo {
+  margin-top: 5rem;
+  margin-left: 0.5rem;
+}
 .lds-ring {
   display: inline-block;
   position: relative;
   top: 35%;
-  left: 36%;
+  left: 40%;
   width: 100px;
-  height: 100px;
+  /* height: 100px; */
+  height: 300px;
 }
 .lds-ring div {
   box-sizing: border-box;
   display: block;
   position: absolute;
+  top: 100%;
   width: 72px;
   height: 72px;
+  /* height: 500px; */
   margin: 8px;
   border: 8px solid #000000;
   border-radius: 50%;

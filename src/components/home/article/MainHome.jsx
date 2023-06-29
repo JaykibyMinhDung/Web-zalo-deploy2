@@ -32,7 +32,7 @@ const MainHome = () => {
             <span className="inline-flex items-center rounded-full px-2 py-1 text-xs font-medium text-orange-navbar ring-1 ring-inset ring-red-600/10">
               <CrowIcon className="w-7 sm:w-14" />
             </span>
-            <p className="w-20 sm:w-20">Quyền lợi</p>
+            <p className="w-20 sm:w-20">Shipping</p>
           </NavLink>
           <NavLink to="#">
             <span className="inline-flex items-center rounded-full px-2 py-1 text-xs font-medium text-orange-navbar ring-1 ring-inset ring-red-600/10">

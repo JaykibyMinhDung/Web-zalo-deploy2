@@ -7,7 +7,7 @@ import { useQuery } from "react-query";
 // component
 import {
   productDetail,
-  resetLoading,
+  // resetLoading,
   searchProductsRecoil,
 } from "../../../store/recoil_store";
 import { DETAIL_PRODUCT } from "../../../constants/queryKeys";
